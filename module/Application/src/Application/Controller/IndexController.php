@@ -84,6 +84,9 @@ class IndexController extends AbstractActionController
             throw new \RuntimeException('You can only use this action from a console!');
         }
 
+//        $all_config = $this->getServiceLocator()->get('config');
+//        var_dump($all_config['website']['log.lamkakyun.com']['username']);exit;
+
         $num = $request->getParam('num');
 
         $method_name = "test$num";

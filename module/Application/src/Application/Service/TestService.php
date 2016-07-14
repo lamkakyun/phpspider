@@ -8,6 +8,7 @@
 namespace Application\Service;
 
 use PHPHtmlParser\Dom;
+use Zend\Config\Config;
 
 /**
  * Class TestService
@@ -16,7 +17,17 @@ use PHPHtmlParser\Dom;
  */
 class TestService {
 
+    protected $config;
+
     public function __construct() { }
+
+    public function setConfig(Config $config) {
+        $this->config = $config;
+    }
+
+    public function getConfig() {
+        return $this->config;
+    }
 
     public function test1() {
         $url = "http://log.lamkakyun.com";
@@ -82,8 +93,11 @@ class TestService {
     public function test3() {
 
         $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
-        $username = "";
-        $password = "";
+        // 使用 Zend_Config 读取配置会不会好一点
+        $username = $this->config->website->loglamkakyuncom->username;
+        $password = $this->config->website->loglamkakyuncom->password;
 
+
+//        \Requests::request()
     }
 }
