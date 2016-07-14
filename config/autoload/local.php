@@ -3,7 +3,7 @@
 return array(
     'website' => array(
         'log.lamkakyun.com' => array(
-            'username' => '123',
+            'username' => 'jet',
             'password' => '123'
         )
     )
