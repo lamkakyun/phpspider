@@ -19,9 +19,5 @@ class IndexControllerFactory implements FactoryInterface {
         $testService = $realSL->get('Application\Service\TestService');
 
         return new IndexController($testService);
-
-//        $controller = new IndexController();
-//        $controller->setTestService($testService);
-//        return $controller;
     }
 }

@@ -26,10 +26,7 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-//        echo 'hello world';exit;
-        var_export($this->testService);exit;
-        $this->testService->test1();
-        exit;
+//        $this->testService->test1();
         return new ViewModel();
     }
 
@@ -89,13 +86,18 @@ class IndexController extends AbstractActionController
 
         $num = $request->getParam('num');
 
-        $method = "test$num()";
-        $this->getTestService()->$method();
+        $method_name = "test$num";
+        $this->getTestService()->$method_name();
     }
 
     public function setTestService($testService)
     {
         $this->testService = $testService;
+    }
+
+    public function getTestService()
+    {
+        return $this->testService;
     }
 
 }
