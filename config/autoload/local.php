@@ -3,8 +3,8 @@
 return array(
     'website' => array(
         'log.lamkakyun.com' => array(
-            'username' => '',
-            'password' => ''
+            'username' => '123',
+            'password' => '123'
         )
     )
 );
