@@ -58,6 +58,12 @@ return array(
         'aliases'            => array(
             'translator' => 'MvcTranslator',
         ),
+//        'invokables' => array(
+//            'Application\Service\TestService' => 'Application\Service\TestService'
+//        ),
+        'factories' => array(
+            'Application\Service\TestService' => 'Application\Factory\TestServiceFactory'
+        )
     ),
     'translator'      => array(
         'locale'                    => 'en_US',
@@ -70,9 +76,13 @@ return array(
         ),
     ),
     'controllers'     => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
+//        'invokables' => array(
+//            'Application\Controller\Index' => 'Application\Controller\IndexController',
+//        ),
+        'factories' => array(
+            'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory',
         ),
+
     ),
     'view_manager'    => array(
         'display_not_found_reason' => true,
@@ -105,7 +115,7 @@ return array(
                 ),
                 'test' => array(
                     'options' => array(
-                        'route'    => 'test',
+                        'route'    => 'test <num>',
                         'defaults' => array(
                             'controller' => 'Application\Controller\Index',
                             'action'     => 'test',

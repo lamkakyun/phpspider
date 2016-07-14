@@ -335,6 +335,13 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
     );
 
     public static $prefixesPsr0 = array (
+        's' => 
+        array (
+            'stringEncode' => 
+            array (
+                0 => __DIR__ . '/..' . '/paquettg/string-encode/src',
+            ),
+        ),
         'Z' => 
         array (
             'ZendXml\\' => 
@@ -370,6 +377,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+            'PHPHtmlParser' => 
+            array (
+                0 => __DIR__ . '/..' . '/paquettg/php-html-parser/src',
             ),
         ),
     );

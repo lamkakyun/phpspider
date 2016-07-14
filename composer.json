@@ -5,7 +5,8 @@
     "php" : ">=5.3.3",
     "zendframework/zendframework" : "~2.4",
     "zendframework/zftool" : "v0.1.0",
-    "rmccue/requests" : "v1.6.1"
+    "rmccue/requests" : "v1.6.1",
+    "paquettg/php-html-parser" : "1.7.0"
   },
   "license" : "BSD-3-Clause",
   "keywords" : [ "framework", "zf2" ],

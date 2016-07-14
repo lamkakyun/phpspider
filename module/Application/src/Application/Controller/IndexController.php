@@ -8,6 +8,8 @@
 
 namespace Application\Controller;
 
+use Application\Service\TestService;
+use PHPHtmlParser\Dom;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Text\Figlet\Figlet;
 use Zend\View\Model\ViewModel;
@@ -16,8 +18,18 @@ use Zend\Math\Rand;
 
 class IndexController extends AbstractActionController
 {
+    protected $testService;
+
+    public function __construct($testService) {
+        $this->testService = $testService;
+    }
+
     public function indexAction()
     {
+//        echo 'hello world';exit;
+        var_export($this->testService);exit;
+        $this->testService->test1();
+        exit;
         return new ViewModel();
     }
 
@@ -65,6 +77,7 @@ class IndexController extends AbstractActionController
 
     /**
      * 使用requests 库 做一个小小的测试
+     * 使用PHPHtmlParser 库 （不是很好用）
      */
     public function testAction()
     {
@@ -74,8 +87,15 @@ class IndexController extends AbstractActionController
             throw new \RuntimeException('You can only use this action from a console!');
         }
 
-        $url = "https://www.zhihu.com/question/48235810";
-        $request = \Requests::get($url);
-        echo $request->body;
+        $num = $request->getParam('num');
+
+        $method = "test$num()";
+        $this->getTestService()->$method();
     }
+
+    public function setTestService($testService)
+    {
+        $this->testService = $testService;
+    }
+
 }
