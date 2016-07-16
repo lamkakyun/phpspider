@@ -36,20 +36,24 @@ class IndexController extends AbstractActionController
     // http://phpspider.test.com/application/index/twitter
     public function twitterAction() {
 
-        $config = $this->getServiceLocator()->get('Config');
-        $twitter = new Twitter($config['twitter']);
+        try {
+            $config = $this->getServiceLocator()->get('Config');
+            $twitter = new Twitter($config['twitter']);
 
-        $res = $twitter->accountVerifyCredentials();
-        if (!$res->isSuccess()) {
-            die('Something is wrong with my credentials!');
+            $res = $twitter->accountVerifyCredentials();
+            if (!$res->isSuccess()) {
+                die('Something is wrong with my credentials!');
+            }
+
+            $response = $twitter->search->tweets('#zf2');
+            foreach ($response->toValue() as $tweet) {
+                printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
+            }
+
+            $twitter->statuses->update('Hello world!');
+        } catch (\Exception $e) {
+            echo $e->getMessage();
         }
-
-        $response = $twitter->search->tweets('#zf2');
-        foreach ($response->toValue() as $tweet) {
-            printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
-        }
-
-        $twitter->statuses->update('Hello world!');
 
         exit;
     }
