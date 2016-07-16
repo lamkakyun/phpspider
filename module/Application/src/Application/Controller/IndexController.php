@@ -45,12 +45,14 @@ class IndexController extends AbstractActionController
                 die('Something is wrong with my credentials!');
             }
 
-            $response = $twitter->search->tweets('#zf2');
-            foreach ($response->toValue() as $tweet) {
-                printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
-            }
+            echo $twitter->getUsername();
 
-            $twitter->statuses->update('Hello world!');
+//            $response = $twitter->search->tweets('#symfony');
+//            foreach ($response->toValue() as $tweet) {
+//                printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
+//            }
+
+//            $twitter->statuses->update('Hello world!');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
