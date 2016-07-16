@@ -109,6 +109,34 @@ class IndexController extends AbstractActionController
         exit;
     }
 
+
+    public function qqmailAction() {
+        $config = $this->getServiceLocator()->get('Config');
+        $qqmail_config = $config['qqmail'];
+        try {
+            $message = new \Zend\Mail\Message();
+            $message->setBody('This ia the text of email.');
+            $message->setFrom('756431672@qq.com', 'lamkakyun');
+            $message->addTo('lamkakyun@gmail.com', 'jet');
+            $message->setSubject('TestSubject');
+
+            $smtp_options = new SmtpOptions();
+            $smtp_options->setHost('smtp.qq.com')
+                ->setConnectionClass('login')
+                ->setName('smtp.qq.com')
+                ->setConnectionConfig($qqmail_config);
+
+            $transport = new Smtp($smtp_options);
+            $transport->send($message);
+
+            echo 'bingo';
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        exit;
+    }
+
     /**
      * 命令行的帮助列表
      * @return string
