@@ -8,6 +8,8 @@
 namespace Application\Service;
 
 use PHPHtmlParser\Dom;
+use Spider\Test\Example;
+use Spider\Version;
 use Zend\Config\Config;
 use Zend\EventManager\EventManager;
 
@@ -44,8 +46,29 @@ class TestService {
         $events->trigger('do');
     }
 
+    /**
+     * 创建自动加载命名空间，并使用其中的类
+     * @desc 在Module 类的 getAutoload 方法中设置
+     */
     public function test01() {
+//        echo Version::getCurrent();
+        echo Version::getLatest();
+    }
 
+    public function test02() {
+        $example = new Example();
+        $example->getEventManager()->attach('dosth', function($e) {
+            $event = $e->getName();
+            $target = get_class($e->getTarget());
+            $params = $e->getParams();
+            printf(
+                'Handled event "%s" on target "%s", with parameters %s',
+                $event,
+                $target,
+                json_encode($params)
+            );
+        });
+        $example->dosth('bar', 'bat'); // 调用方法，触发事件
     }
 
     public function test1() {

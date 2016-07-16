@@ -37,6 +37,7 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface, Co
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                    'Spider' => getcwd() . '/library/Spider'
                 ),
             ),
         );

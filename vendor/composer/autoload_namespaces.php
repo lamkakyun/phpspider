@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'stringEncode' => array($vendorDir . '/paquettg/string-encode/src'),
     'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
+    'ZendService\\Twitter\\' => array($vendorDir . '/zendframework/zendservice-twitter/library'),
+    'ZendOAuth' => array($vendorDir . '/zendframework/zendoauth/library'),
     'ZendDiagnostics\\' => array($vendorDir . '/zendframework/zenddiagnostics/src'),
     'ZendDiagnosticsTest\\' => array($vendorDir . '/zendframework/zenddiagnostics/tests'),
     'ZFTool\\' => array($vendorDir . '/zendframework/zftool/src'),

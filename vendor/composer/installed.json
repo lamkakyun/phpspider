@@ -10,7 +10,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/ZendXml/7b64507bc35d841c9c5802d67f6f87ef8e1a58c9.zip",
+            "url": "https://api.github.com/repos/zendframework/ZendXml/zipball/7b64507bc35d841c9c5802d67f6f87ef8e1a58c9",
             "reference": "7b64507bc35d841c9c5802d67f6f87ef8e1a58c9",
             "shasum": ""
         },
@@ -57,7 +57,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-stdlib/0e44eb46788f65e09e077eb7f44d2659143bcc1f.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/0e44eb46788f65e09e077eb7f44d2659143bcc1f",
             "reference": "0e44eb46788f65e09e077eb7f44d2659143bcc1f",
             "shasum": ""
         },
@@ -118,7 +118,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-hydrator/22652e1661a5a10b3f564cf7824a2206cf5a4a65.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/22652e1661a5a10b3f564cf7824a2206cf5a4a65",
             "reference": "22652e1661a5a10b3f564cf7824a2206cf5a4a65",
             "shasum": ""
         },
@@ -178,7 +178,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-eventmanager/3d41b6129fb4916d483671cea9f77e4f90ae85d3.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/3d41b6129fb4916d483671cea9f77e4f90ae85d3",
             "reference": "3d41b6129fb4916d483671cea9f77e4f90ae85d3",
             "shasum": ""
         },
@@ -227,7 +227,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-code/95033f061b083e16cdee60530ec260d7d628b887.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-code/zipball/95033f061b083e16cdee60530ec260d7d628b887",
             "reference": "95033f061b083e16cdee60530ec260d7d628b887",
             "shasum": ""
         },
@@ -281,7 +281,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-server/7cb617ca3e9b24579f544a244ee79ae61f480914.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-server/zipball/7cb617ca3e9b24579f544a244ee79ae61f480914",
             "reference": "7cb617ca3e9b24579f544a244ee79ae61f480914",
             "shasum": ""
         },
@@ -329,7 +329,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-math/f4358090d5d23973121f1ed0b376184b66d9edec.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-math/zipball/f4358090d5d23973121f1ed0b376184b66d9edec",
             "reference": "f4358090d5d23973121f1ed0b376184b66d9edec",
             "shasum": ""
         },
@@ -381,7 +381,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/container-interop/container-interop/fc08354828f8fd3245f77a66b9e23a6bca48297e.zip",
+            "url": "https://api.github.com/repos/container-interop/container-interop/zipball/fc08354828f8fd3245f77a66b9e23a6bca48297e",
             "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e",
             "shasum": ""
         },
@@ -410,7 +410,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-validator/8ec9f57a717dd37340308aa632f148a2c2be1cfc.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/8ec9f57a717dd37340308aa632f148a2c2be1cfc",
             "reference": "8ec9f57a717dd37340308aa632f148a2c2be1cfc",
             "shasum": ""
         },
@@ -483,7 +483,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-escaper/2dcd14b61a72d8b8e27d579c6344e12c26141d4e.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/2dcd14b61a72d8b8e27d579c6344e12c26141d4e",
             "reference": "2dcd14b61a72d8b8e27d579c6344e12c26141d4e",
             "shasum": ""
         },
@@ -529,7 +529,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-uri/0bf717a239432b1a1675ae314f7c4acd742749ed.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-uri/zipball/0bf717a239432b1a1675ae314f7c4acd742749ed",
             "reference": "0bf717a239432b1a1675ae314f7c4acd742749ed",
             "shasum": ""
         },
@@ -578,7 +578,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-loader/c5fd2f071bde071f4363def7dea8dec7393e135c.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-loader/zipball/c5fd2f071bde071f4363def7dea8dec7393e135c",
             "reference": "c5fd2f071bde071f4363def7dea8dec7393e135c",
             "shasum": ""
         },
@@ -624,7 +624,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-http/7b920b4ec34b5ee58f76eb4e8c408b083121953c.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-http/zipball/7b920b4ec34b5ee58f76eb4e8c408b083121953c",
             "reference": "7b920b4ec34b5ee58f76eb4e8c408b083121953c",
             "shasum": ""
         },
@@ -676,7 +676,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-xmlrpc/04f5c91e4d15ab8ca379877ec962589c5e9b66d7.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-xmlrpc/zipball/04f5c91e4d15ab8ca379877ec962589c5e9b66d7",
             "reference": "04f5c91e4d15ab8ca379877ec962589c5e9b66d7",
             "shasum": ""
         },
@@ -730,7 +730,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-view/71b4ebd0c4c9a2d0e0438f9d3a435e08dd769ff8.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-view/zipball/71b4ebd0c4c9a2d0e0438f9d3a435e08dd769ff8",
             "reference": "71b4ebd0c4c9a2d0e0438f9d3a435e08dd769ff8",
             "shasum": ""
         },
@@ -819,7 +819,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-json/4c8705dbe4ad7d7e51b2876c5b9eea0ef916ba28.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-json/zipball/4c8705dbe4ad7d7e51b2876c5b9eea0ef916ba28",
             "reference": "4c8705dbe4ad7d7e51b2876c5b9eea0ef916ba28",
             "shasum": ""
         },
@@ -876,7 +876,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-version/e30c55dc394eaf396f0347887af0a7bef471fe08.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-version/zipball/e30c55dc394eaf396f0347887af0a7bef471fe08",
             "reference": "e30c55dc394eaf396f0347887af0a7bef471fe08",
             "shasum": ""
         },
@@ -928,7 +928,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-servicemanager/a6db4d13b9141fccce5dcb553df0295d6ad7d477.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/a6db4d13b9141fccce5dcb553df0295d6ad7d477",
             "reference": "a6db4d13b9141fccce5dcb553df0295d6ad7d477",
             "shasum": ""
         },
@@ -982,7 +982,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-text/07ad9388e4d4f12620ad37b52a5b0e4ee7845f92.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-text/zipball/07ad9388e4d4f12620ad37b52a5b0e4ee7845f92",
             "reference": "07ad9388e4d4f12620ad37b52a5b0e4ee7845f92",
             "shasum": ""
         },
@@ -1031,7 +1031,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/php-fig/http-message/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298.zip",
+            "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
             "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
             "shasum": ""
         },
@@ -1082,7 +1082,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-diactoros/b1d59735b672865dbeb930805029c24f226e3e77.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/b1d59735b672865dbeb930805029c24f226e3e77",
             "reference": "b1d59735b672865dbeb930805029c24f226e3e77",
             "shasum": ""
         },
@@ -1134,7 +1134,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-psr7bridge/86c0b53b0c6381391c4add4a93a56e51d5c74605.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-psr7bridge/zipball/86c0b53b0c6381391c4add4a93a56e51d5c74605",
             "reference": "86c0b53b0c6381391c4add4a93a56e51d5c74605",
             "shasum": ""
         },
@@ -1185,7 +1185,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-filter/84c50246428efb0a1e52868e162dab3e149d5b80.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-filter/zipball/84c50246428efb0a1e52868e162dab3e149d5b80",
             "reference": "84c50246428efb0a1e52868e162dab3e149d5b80",
             "shasum": ""
         },
@@ -1247,7 +1247,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-inputfilter/5630ef49e8c16a6fe0c2bd0d2a519869b14d5b12.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-inputfilter/zipball/5630ef49e8c16a6fe0c2bd0d2a519869b14d5b12",
             "reference": "5630ef49e8c16a6fe0c2bd0d2a519869b14d5b12",
             "shasum": ""
         },
@@ -1304,7 +1304,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-form/3abb688fda20989b2e2b444efc1dba173abb2e07.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-form/zipball/3abb688fda20989b2e2b444efc1dba173abb2e07",
             "reference": "3abb688fda20989b2e2b444efc1dba173abb2e07",
             "shasum": ""
         },
@@ -1383,7 +1383,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-di/1fd1ba85660b5a2718741b38639dc7c4c3194b37.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-di/zipball/1fd1ba85660b5a2718741b38639dc7c4c3194b37",
             "reference": "1fd1ba85660b5a2718741b38639dc7c4c3194b37",
             "shasum": ""
         },
@@ -1432,7 +1432,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-mvc/9b705d5d5c7ed3808f8d52b440f612d9dc28c395.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-mvc/zipball/9b705d5d5c7ed3808f8d52b440f612d9dc28c395",
             "reference": "9b705d5d5c7ed3808f8d52b440f612d9dc28c395",
             "shasum": ""
         },
@@ -1525,7 +1525,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-dom/a9e145b2b52fe6de5a7a6b0ddb5c773c2c72d59e.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-dom/zipball/a9e145b2b52fe6de5a7a6b0ddb5c773c2c72d59e",
             "reference": "a9e145b2b52fe6de5a7a6b0ddb5c773c2c72d59e",
             "shasum": ""
         },
@@ -1572,7 +1572,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-console/cbbdfdfa0564aa20d1c6c6ef3daeafe6aec02360.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-console/zipball/cbbdfdfa0564aa20d1c6c6ef3daeafe6aec02360",
             "reference": "cbbdfdfa0564aa20d1c6c6ef3daeafe6aec02360",
             "shasum": ""
         },
@@ -1626,7 +1626,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/version/58b3a85e7999757d6ad81c787a1fbf5ff6c628c6.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
             "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
             "shasum": ""
         },
@@ -1663,7 +1663,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/symfony/yaml/2884c26ce4c1d61aebf423a8b912950fe7c764de.zip",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/2884c26ce4c1d61aebf423a8b912950fe7c764de",
             "reference": "2884c26ce4c1d61aebf423a8b912950fe7c764de",
             "shasum": ""
         },
@@ -1714,7 +1714,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/resource-operations/ce990bb21759f94aeafd30209e8cfcdfa8bc3f52.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
             "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
             "shasum": ""
         },
@@ -1758,7 +1758,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/recursion-context/913401df809e99e4f47b27cdd781f4a258d58791.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/913401df809e99e4f47b27cdd781f4a258d58791",
             "reference": "913401df809e99e4f47b27cdd781f4a258d58791",
             "shasum": ""
         },
@@ -1813,7 +1813,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/object-enumerator/d4ca2fb70344987502567bc50081c03e6192fb26.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/d4ca2fb70344987502567bc50081c03e6192fb26",
             "reference": "d4ca2fb70344987502567bc50081c03e6192fb26",
             "shasum": ""
         },
@@ -1861,7 +1861,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/global-state/bc37d50fea7d017d3d340f230811c9f1d7280af4.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/bc37d50fea7d017d3d340f230811c9f1d7280af4",
             "reference": "bc37d50fea7d017d3d340f230811c9f1d7280af4",
             "shasum": ""
         },
@@ -1914,7 +1914,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/exporter/42c4c2eec485ee3e159ec9884f95b431287edde4.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/42c4c2eec485ee3e159ec9884f95b431287edde4",
             "reference": "42c4c2eec485ee3e159ec9884f95b431287edde4",
             "shasum": ""
         },
@@ -1983,7 +1983,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/environment/4e8f0da10ac5802913afc151413bc8c53b6c2716.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/4e8f0da10ac5802913afc151413bc8c53b6c2716",
             "reference": "4e8f0da10ac5802913afc151413bc8c53b6c2716",
             "shasum": ""
         },
@@ -2035,7 +2035,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/diff/13edfd8706462032c2f52b4b862974dd46b71c9e.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
             "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
             "shasum": ""
         },
@@ -2089,7 +2089,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/comparator/937efb279bd37a375bcadf584dec0726f84dbf22.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/937efb279bd37a375bcadf584dec0726f84dbf22",
             "reference": "937efb279bd37a375bcadf584dec0726f84dbf22",
             "shasum": ""
         },
@@ -2155,7 +2155,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/doctrine/instantiator/8e884e78f9f0eb1329e445619e04456e64d8051d.zip",
+            "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
             "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
             "shasum": ""
         },
@@ -2211,7 +2211,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/php-text-template/31f8b717e51d9a2afca6c9f046f5d69fc27c8686.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/31f8b717e51d9a2afca6c9f046f5d69fc27c8686",
             "reference": "31f8b717e51d9a2afca6c9f046f5d69fc27c8686",
             "shasum": ""
         },
@@ -2254,7 +2254,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit-mock-objects/b13d0d9426ced06958bd32104653526a6c998a52.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/b13d0d9426ced06958bd32104653526a6c998a52",
             "reference": "b13d0d9426ced06958bd32104653526a6c998a52",
             "shasum": ""
         },
@@ -2315,7 +2315,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/php-timer/38e9124049cf1a164f1e4537caf19c99bf1eb260.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
             "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
             "shasum": ""
         },
@@ -2361,7 +2361,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/php-file-iterator/6150bf2c35d3fc379e50c7602b75caceaa39dbf0.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/6150bf2c35d3fc379e50c7602b75caceaa39dbf0",
             "reference": "6150bf2c35d3fc379e50c7602b75caceaa39dbf0",
             "shasum": ""
         },
@@ -2410,7 +2410,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/code-unit-reverse-lookup/c36f5e7cfce482fde5bf8d10d41a53591e0198fe.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
             "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
             "shasum": ""
         },
@@ -2457,7 +2457,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/php-token-stream/3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
             "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
             "shasum": ""
         },
@@ -2508,7 +2508,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/php-code-coverage/900370c81280cc0d942ffbc5912d80464eaee7e9.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/900370c81280cc0d942ffbc5912d80464eaee7e9",
             "reference": "900370c81280cc0d942ffbc5912d80464eaee7e9",
             "shasum": ""
         },
@@ -2573,7 +2573,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/webmozart/assert/30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde.zip",
+            "url": "https://api.github.com/repos/webmozart/assert/zipball/30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde",
             "reference": "30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde",
             "shasum": ""
         },
@@ -2624,7 +2624,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/phpDocumentor/ReflectionCommon/144c307535e82c8fdcaacbcfc1d6d8eeb896687c.zip",
+            "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
             "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
             "shasum": ""
         },
@@ -2680,7 +2680,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/phpDocumentor/TypeResolver/b39c7a5b194f9ed7bd0dd345c751007a41862443.zip",
+            "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/b39c7a5b194f9ed7bd0dd345c751007a41862443",
             "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443",
             "shasum": ""
         },
@@ -2729,7 +2729,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/phpDocumentor/ReflectionDocBlock/9270140b940ff02e58ec577c237274e92cd40cdd.zip",
+            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/9270140b940ff02e58ec577c237274e92cd40cdd",
             "reference": "9270140b940ff02e58ec577c237274e92cd40cdd",
             "shasum": ""
         },
@@ -2776,7 +2776,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/phpspec/prophecy/58a8137754bc24b25740d4281399a4a3596058e0.zip",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/58a8137754bc24b25740d4281399a4a3596058e0",
             "reference": "58a8137754bc24b25740d4281399a4a3596058e0",
             "shasum": ""
         },
@@ -2840,7 +2840,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/myclabs/DeepCopy/a8773992b362b58498eed24bf85005f363c34771.zip",
+            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/a8773992b362b58498eed24bf85005f363c34771",
             "reference": "a8773992b362b58498eed24bf85005f363c34771",
             "shasum": ""
         },
@@ -2884,7 +2884,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/2f1fc94b77ea6418bd6a06c64a1dac0645fbce59.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2f1fc94b77ea6418bd6a06c64a1dac0645fbce59",
             "reference": "2f1fc94b77ea6418bd6a06c64a1dac0645fbce59",
             "shasum": ""
         },
@@ -2964,7 +2964,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-test/0e2d81410af33c092a2916e77cbdfa3b6dc1bf1b.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-test/zipball/0e2d81410af33c092a2916e77cbdfa3b6dc1bf1b",
             "reference": "0e2d81410af33c092a2916e77cbdfa3b6dc1bf1b",
             "shasum": ""
         },
@@ -3027,7 +3027,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-tag/4429ca5016361f12eff920370170391a0f4adbff.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-tag/zipball/4429ca5016361f12eff920370170391a0f4adbff",
             "reference": "4429ca5016361f12eff920370170391a0f4adbff",
             "shasum": ""
         },
@@ -3080,7 +3080,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-soap/2d6012e7231cce550219eccfc80836a028d20bf1.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-soap/zipball/2d6012e7231cce550219eccfc80836a028d20bf1",
             "reference": "2d6012e7231cce550219eccfc80836a028d20bf1",
             "shasum": ""
         },
@@ -3134,7 +3134,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-session/346e9709657b81a5d53d70ce754730a26d1f02f2.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-session/zipball/346e9709657b81a5d53d70ce754730a26d1f02f2",
             "reference": "346e9709657b81a5d53d70ce754730a26d1f02f2",
             "shasum": ""
         },
@@ -3202,7 +3202,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-serializer/ff74ea020f5f90866eb28365327e9bc765a61a6e.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-serializer/zipball/ff74ea020f5f90866eb28365327e9bc765a61a6e",
             "reference": "ff74ea020f5f90866eb28365327e9bc765a61a6e",
             "shasum": ""
         },
@@ -3261,7 +3261,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-progressbar/0723a1f5f7c3f90cdde80ea68cb781e099c770bc.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-progressbar/zipball/0723a1f5f7c3f90cdde80ea68cb781e099c770bc",
             "reference": "0723a1f5f7c3f90cdde80ea68cb781e099c770bc",
             "shasum": ""
         },
@@ -3315,7 +3315,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-permissions-rbac/4213a4889ae7d7607c7974124965d12d1c395115.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-permissions-rbac/zipball/4213a4889ae7d7607c7974124965d12d1c395115",
             "reference": "4213a4889ae7d7607c7974124965d12d1c395115",
             "shasum": ""
         },
@@ -3362,7 +3362,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-permissions-acl/843bbd9c6f6d20b84dd0ce6c815d10397e98082b.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-permissions-acl/zipball/843bbd9c6f6d20b84dd0ce6c815d10397e98082b",
             "reference": "843bbd9c6f6d20b84dd0ce6c815d10397e98082b",
             "shasum": ""
         },
@@ -3413,7 +3413,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-paginator/42211f3e1e8230953c641e91fec5aa9fe964eb95.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-paginator/zipball/42211f3e1e8230953c641e91fec5aa9fe964eb95",
             "reference": "42211f3e1e8230953c641e91fec5aa9fe964eb95",
             "shasum": ""
         },
@@ -3479,7 +3479,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-navigation/353f5c31aeaaecc2c12e7f949c3feb3dc255019b.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-navigation/zipball/353f5c31aeaaecc2c12e7f949c3feb3dc255019b",
             "reference": "353f5c31aeaaecc2c12e7f949c3feb3dc255019b",
             "shasum": ""
         },
@@ -3549,7 +3549,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-config/2920e877a9f6dca9fa8f6bd3b1ffc2e19bb1e30d.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-config/zipball/2920e877a9f6dca9fa8f6bd3b1ffc2e19bb1e30d",
             "reference": "2920e877a9f6dca9fa8f6bd3b1ffc2e19bb1e30d",
             "shasum": ""
         },
@@ -3607,7 +3607,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-modulemanager/2a59ab9a0dd7699a55050dff659ab0f28272b46e.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-modulemanager/zipball/2a59ab9a0dd7699a55050dff659ab0f28272b46e",
             "reference": "2a59ab9a0dd7699a55050dff659ab0f28272b46e",
             "shasum": ""
         },
@@ -3668,7 +3668,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-mime/340769c3d962ac4d9d3cf9da7e75419368e56fcc.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-mime/zipball/340769c3d962ac4d9d3cf9da7e75419368e56fcc",
             "reference": "340769c3d962ac4d9d3cf9da7e75419368e56fcc",
             "shasum": ""
         },
@@ -3719,7 +3719,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-memory/bbf8b9509660b2a97f2d6ccfefabffac3cca6a5c.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-memory/zipball/bbf8b9509660b2a97f2d6ccfefabffac3cca6a5c",
             "reference": "bbf8b9509660b2a97f2d6ccfefabffac3cca6a5c",
             "shasum": ""
         },
@@ -3769,7 +3769,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-mail/2e817b58ebaa2b422a25d854106a91f74b6a7976.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-mail/zipball/2e817b58ebaa2b422a25d854106a91f74b6a7976",
             "reference": "2e817b58ebaa2b422a25d854106a91f74b6a7976",
             "shasum": ""
         },
@@ -3831,7 +3831,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-crypt/1b2f5600bf6262904167116fa67b58ab1457036d.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-crypt/zipball/1b2f5600bf6262904167116fa67b58ab1457036d",
             "reference": "1b2f5600bf6262904167116fa67b58ab1457036d",
             "shasum": ""
         },
@@ -3883,7 +3883,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/php-fig/log/fe0936ee26643249e916849d48e3a51d5f5e278b.zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
             "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
             "shasum": ""
         },
@@ -3923,7 +3923,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-log/0325ad00505b8f39d79f26e666dc851bfd25fdaa.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-log/zipball/0325ad00505b8f39d79f26e666dc851bfd25fdaa",
             "reference": "0325ad00505b8f39d79f26e666dc851bfd25fdaa",
             "shasum": ""
         },
@@ -3996,7 +3996,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-i18n-resources/fe53e1c96654c4fc89975d14ed13ccbce6c08179.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-i18n-resources/zipball/fe53e1c96654c4fc89975d14ed13ccbce6c08179",
             "reference": "fe53e1c96654c4fc89975d14ed13ccbce6c08179",
             "shasum": ""
         },
@@ -4033,7 +4033,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-i18n/b2db0d8246a865c659f93199f90f5fc2cd2f3cd8.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/b2db0d8246a865c659f93199f90f5fc2cd2f3cd8",
             "reference": "b2db0d8246a865c659f93199f90f5fc2cd2f3cd8",
             "shasum": ""
         },
@@ -4102,7 +4102,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-file/8936999f244011525671db8d6e35a2f2232d5060.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-file/zipball/8936999f244011525671db8d6e35a2f2232d5060",
             "reference": "8936999f244011525671db8d6e35a2f2232d5060",
             "shasum": ""
         },
@@ -4160,7 +4160,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-feed/12b328d382aa5200f1de53d4147033b885776b67.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-feed/zipball/12b328d382aa5200f1de53d4147033b885776b67",
             "reference": "12b328d382aa5200f1de53d4147033b885776b67",
             "shasum": ""
         },
@@ -4223,7 +4223,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-debug/b6f9df59155391ca683c479a0d758f66ef73b3b3.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-debug/zipball/b6f9df59155391ca683c479a0d758f66ef73b3b3",
             "reference": "b6f9df59155391ca683c479a0d758f66ef73b3b3",
             "shasum": ""
         },
@@ -4274,7 +4274,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-db/c9fa8fdab194093fff58e4f1180c7e15d80a2cb5.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-db/zipball/c9fa8fdab194093fff58e4f1180c7e15d80a2cb5",
             "reference": "c9fa8fdab194093fff58e4f1180c7e15d80a2cb5",
             "shasum": ""
         },
@@ -4333,7 +4333,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-captcha/9a1197bc5b8aa4fad104c22f6d9b2a3d4bdda0c6.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-captcha/zipball/9a1197bc5b8aa4fad104c22f6d9b2a3d4bdda0c6",
             "reference": "9a1197bc5b8aa4fad104c22f6d9b2a3d4bdda0c6",
             "shasum": ""
         },
@@ -4392,7 +4392,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-cache/2c68def8f96ce842d2f2a9a69e2f3508c2f5312d.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-cache/zipball/2c68def8f96ce842d2f2a9a69e2f3508c2f5312d",
             "reference": "2c68def8f96ce842d2f2a9a69e2f3508c2f5312d",
             "shasum": ""
         },
@@ -4463,7 +4463,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-barcode/9201afb8a1356f149ddb955a3c9e017f47c0dd6c.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-barcode/zipball/9201afb8a1356f149ddb955a3c9e017f47c0dd6c",
             "reference": "9201afb8a1356f149ddb955a3c9e017f47c0dd6c",
             "shasum": ""
         },
@@ -4518,7 +4518,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zend-authentication/1422dec160eb769c719cad2229847fcbf20a1405.zip",
+            "url": "https://api.github.com/repos/zendframework/zend-authentication/zipball/1422dec160eb769c719cad2229847fcbf20a1405",
             "reference": "1422dec160eb769c719cad2229847fcbf20a1405",
             "shasum": ""
         },
@@ -4582,7 +4582,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/zendframework/aeb432d59410cd9a4a68166738745387a9bf49ab.zip",
+            "url": "https://api.github.com/repos/zendframework/zendframework/zipball/aeb432d59410cd9a4a68166738745387a9bf49ab",
             "reference": "aeb432d59410cd9a4a68166738745387a9bf49ab",
             "shasum": ""
         },
@@ -4679,7 +4679,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/ZendDiagnostics/292653c287a9e9d811417d4cb8a0025a4c1894cf.zip",
+            "url": "https://api.github.com/repos/zendframework/ZendDiagnostics/zipball/292653c287a9e9d811417d4cb8a0025a4c1894cf",
             "reference": "292653c287a9e9d811417d4cb8a0025a4c1894cf",
             "shasum": ""
         },
@@ -4744,7 +4744,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/zendframework/ZFTool/8bab848834bfc48fef2f4b3e874ddd3760fb9e0d.zip",
+            "url": "https://api.github.com/repos/zendframework/ZFTool/zipball/8bab848834bfc48fef2f4b3e874ddd3760fb9e0d",
             "reference": "8bab848834bfc48fef2f4b3e874ddd3760fb9e0d",
             "shasum": ""
         },
@@ -4800,7 +4800,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/rmccue/Requests/6aac485666c2955077d77b796bbdd25f0013a4ea.zip",
+            "url": "https://api.github.com/repos/rmccue/Requests/zipball/6aac485666c2955077d77b796bbdd25f0013a4ea",
             "reference": "6aac485666c2955077d77b796bbdd25f0013a4ea",
             "shasum": ""
         },
@@ -4851,7 +4851,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/paquettg/string-encoder/cf08343649701979f581c1601d01247fa3782439.zip",
+            "url": "https://api.github.com/repos/paquettg/string-encoder/zipball/cf08343649701979f581c1601d01247fa3782439",
             "reference": "cf08343649701979f581c1601d01247fa3782439",
             "shasum": ""
         },
@@ -4899,7 +4899,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/paquettg/php-html-parser/18845e09831dd0772b88b51e788a4f74c701224c.zip",
+            "url": "https://api.github.com/repos/paquettg/php-html-parser/zipball/18845e09831dd0772b88b51e788a4f74c701224c",
             "reference": "18845e09831dd0772b88b51e788a4f74c701224c",
             "shasum": ""
         },
@@ -4937,6 +4937,107 @@
             "dom",
             "html",
             "parser"
+        ]
+    },
+    {
+        "name": "zendframework/zendoauth",
+        "version": "2.0.3",
+        "version_normalized": "2.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/ZendOAuth.git",
+            "reference": "36defad317aa80ac9366f5e5171dc0316f009f13"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/ZendOAuth/zipball/36defad317aa80ac9366f5e5171dc0316f009f13",
+            "reference": "36defad317aa80ac9366f5e5171dc0316f009f13",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zend-config": ">=2.0.0",
+            "zendframework/zend-crypt": ">=2.0.0",
+            "zendframework/zend-http": ">=2.0.0",
+            "zendframework/zend-i18n": ">=2.0.0",
+            "zendframework/zend-loader": ">=2.0.0",
+            "zendframework/zend-math": ">=2.0.0",
+            "zendframework/zend-stdlib": ">=2.0.0",
+            "zendframework/zend-uri": ">=2.0.0"
+        },
+        "time": "2014-04-09 01:02:18",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ZendOAuth": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "homepage": "http://packages.zendframework.com/",
+        "keywords": [
+            "oauth",
+            "zf2"
+        ]
+    },
+    {
+        "name": "zendframework/zendservice-twitter",
+        "version": "2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/ZendService_Twitter.git",
+            "reference": "b3be44fa3f2285e4ee9811ce5c518e3eab020732"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/ZendService_Twitter/zipball/b3be44fa3f2285e4ee9811ce5c518e3eab020732",
+            "reference": "b3be44fa3f2285e4ee9811ce5c518e3eab020732",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zend-feed": ">=2.0.0",
+            "zendframework/zend-http": ">=2.0.0",
+            "zendframework/zend-json": ">=2.0.0",
+            "zendframework/zend-stdlib": ">=2.0.0",
+            "zendframework/zend-uri": ">=2.0.0",
+            "zendframework/zendoauth": ">=2.0.0"
+        },
+        "require-dev": {
+            "zendframework/zend-config": ">=2.0.0"
+        },
+        "time": "2013-03-13 20:49:31",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev",
+                "dev-develop": "2.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ZendService\\Twitter\\": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "OOP wrapper for the Twitter web service",
+        "homepage": "http://packages.zendframework.com/",
+        "keywords": [
+            "twitter",
+            "zf2"
         ]
     }
 ]

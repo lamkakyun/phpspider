@@ -10,11 +10,13 @@ namespace Application\Controller;
 
 use Application\Service\TestService;
 use PHPHtmlParser\Dom;
+use Spider\Version;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Text\Figlet\Figlet;
 use Zend\View\Model\ViewModel;
 use Zend\Console\Request as ConsoleRequest;
 use Zend\Math\Rand;
+use ZendService\Twitter\Twitter;
 
 class IndexController extends AbstractActionController
 {
@@ -26,8 +28,30 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
+//        echo Version::getCurrent();exit;
 //        $this->testService->test1();
         return new ViewModel();
+    }
+
+    // http://phpspider.test.com/application/index/twitter
+    public function twitterAction() {
+
+        $config = $this->getServiceLocator()->get('Config');
+        $twitter = new Twitter($config['twitter']);
+
+        $res = $twitter->accountVerifyCredentials();
+        if (!$res->isSuccess()) {
+            die('Something is wrong with my credentials!');
+        }
+
+        $response = $twitter->search->tweets('#zf2');
+        foreach ($response->toValue() as $tweet) {
+            printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
+        }
+
+        $twitter->statuses->update('Hello world!');
+
+        exit;
     }
 
     /**

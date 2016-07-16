@@ -348,6 +348,14 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             array (
                 0 => __DIR__ . '/..' . '/zendframework/zendxml/library',
             ),
+            'ZendService\\Twitter\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/zendframework/zendservice-twitter/library',
+            ),
+            'ZendOAuth' => 
+            array (
+                0 => __DIR__ . '/..' . '/zendframework/zendoauth/library',
+            ),
             'ZendDiagnostics\\' => 
             array (
                 0 => __DIR__ . '/..' . '/zendframework/zenddiagnostics/src',
