@@ -9,6 +9,7 @@ namespace Application\Service;
 
 use PHPHtmlParser\Dom;
 use Zend\Config\Config;
+use Zend\EventManager\EventManager;
 
 /**
  * Class TestService
@@ -27,6 +28,24 @@ class TestService {
 
     public function getConfig() {
         return $this->config;
+    }
+
+    /**
+     * test EventManager 1
+     */
+    public function test0() {
+        $events = new EventManager();
+        $events->attach('do', function($e) {
+            $event = $e->getName();
+            $params = $e->getParams(); // 这里没有参数哦
+            printf('handle event %s, with parameters %s', $event, json_encode($params));
+        });
+
+        $events->trigger('do');
+    }
+
+    public function test01() {
+
     }
 
     public function test1() {
