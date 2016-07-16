@@ -47,12 +47,12 @@ class IndexController extends AbstractActionController
 
             $response = $twitter->search->tweets('#symfony');
             foreach ($response->toValue() as $tweet) {
-                if (is_array($tweet)) {
-                    printf("%s\n- (%s)\n", $tweet['text'], $tweet['user']['name']);
-                } else if(is_object($tweet)) {
-                    printf("%s\n- (%s)\n", $tweet->text, $tweet->user->name);
+                if (is_array($tweet) && isset($tweet['text'])) {
+                    echo $tweet['text'] . "-" . $tweet['user']['name'] . "<br>";
+                } else if(is_object($tweet) && isset($tweet->text)) {
+                    echo $tweet->text . '-' . $tweet->user->name . "<br>";
                 } else {
-                    printf("nothing");
+                    echo "nothing<br>";
                 }
             }
 
