@@ -47,13 +47,26 @@ class IndexController extends AbstractActionController
 
             $response = $twitter->search->tweets('#symfony');
             foreach ($response->toValue() as $tweet) {
-                if (is_array($tweet) && isset($tweet['text'])) {
-                    echo $tweet['text'] . "-" . $tweet['user']['name'] . "<br>";
-                } else if(is_object($tweet) && isset($tweet->text)) {
-                    echo $tweet->text . '-' . $tweet->user->name . "<br>";
+                if (is_array($tweet)){
+									echo 'arr<br>';
+									foreach ($tweet as $v) {
+											if (is_array($v)) {
+													echo '__arr<br>';
+											} else {
+													echo '__obj<br>';
+													echo '____' . $v->text . '<br>';
+											}
+									}
+                } else if(is_object($tweet)) {
+									echo 'obj<br>';
+									/* var_dump($tweet);exit; */
+									echo 'time:' . $tweet->completed_in . '<br>';
+									echo 'query:' . $tweet->query . '<br>';
+									echo 'count:' . $tweet->count . '<br>';
                 } else {
-                    echo "nothing<br>";
+                    echo "nothing";
                 }
+								echo '<hr>';
             }
 
 //            $twitter->statuses->update('Hello world!');
