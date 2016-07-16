@@ -11,6 +11,9 @@ namespace Application\Controller;
 use Application\Service\TestService;
 use PHPHtmlParser\Dom;
 use Spider\Version;
+use Zend\Mail\Storage\Message;
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Text\Figlet\Figlet;
 use Zend\View\Model\ViewModel;
@@ -72,6 +75,33 @@ class IndexController extends AbstractActionController
             }
 
 //            $twitter->statuses->update('Hello world!');
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        exit;
+    }
+
+    public function gmailAction() {
+        $config = $this->getServiceLocator()->get('Config');
+        $gmail_config = $config['gmail'];
+        try {
+            $message = new \Zend\Mail\Message();
+            $message->setBody('This ia the text of email.');
+            $message->setFrom('lamkakyun@spider.com', 'lamkakyun');
+            $message->addTo('756431672@qq.com', 'jet');
+            $message->setSubject('TestSubject');
+
+            $smtp_options = new SmtpOptions();
+            $smtp_options->setHost('smtp.gmail.com')
+                ->setConnectionClass('login')
+                ->setName('smtp.gmail.com')
+                ->setConnectionConfig($gmail_config);
+
+            $transport = new Smtp($smtp_options);
+            $transport->send($message);
+
+            echo 'bingo';
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
