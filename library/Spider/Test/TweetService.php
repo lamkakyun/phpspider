@@ -22,4 +22,9 @@ class TweetService implements EventManagerAwareInterface {
         // TODO: Implement getEventManager() method.
     }
 
+
+    public function sendTweet() {
+
+    }
+
 }

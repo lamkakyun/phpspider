@@ -12,6 +12,10 @@ use Spider\Test\Example;
 use Spider\Version;
 use Zend\Config\Config;
 use Zend\EventManager\EventManager;
+use Zend\Mail\Message;
+use Zend\Mail\Transport\Sendmail;
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
 
 /**
  * Class TestService
@@ -20,16 +24,16 @@ use Zend\EventManager\EventManager;
  */
 class TestService {
 
-    protected $config;
+    protected static $config;
 
     public function __construct() { }
 
     public function setConfig(Config $config) {
-        $this->config = $config;
+        self::$config = $config->toArray();
     }
 
     public function getConfig() {
-        return $this->config;
+        return self::$config;
     }
 
     /**
@@ -69,6 +73,35 @@ class TestService {
             );
         });
         $example->dosth('bar', 'bat'); // 调用方法，触发事件
+    }
+
+
+    /**
+     * 测试发送邮件
+     */
+    public function test03() {
+        $gmail_config = self::$config['gmail'];
+        try {
+            $message = new Message();
+            $message->setBody('This ia the text of email.');
+            $message->setFrom('lamkakyun@spider.com', 'lamkakyun');
+            $message->addTo('756431672@qq.com', 'jet');
+            $message->setSubject('TestSubject');
+
+            $smtp_options = new SmtpOptions();
+            $smtp_options->setHost('smtp.gmail.com')
+                         ->setConnectionClass('login')
+                         ->setName('smtp.gmail.com')
+                         ->setConnectionConfig($gmail_config);
+
+            $transport = new Smtp($smtp_options);
+            $transport->send($message);
+
+            echo 'bingo';
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
     }
 
     public function test1() {
@@ -136,8 +169,8 @@ class TestService {
 
         $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
         // 使用 Zend_Config 读取配置会不会好一点
-        $username = $this->config->website->loglamkakyuncom->username;
-        $password = $this->config->website->loglamkakyuncom->password;
+        $username = self::$config['website']['loglamkakyuncom']['username'];
+        $password = self::$config['website']['loglamkakyuncom']['password'];
 
 
 //        \Requests::request()
