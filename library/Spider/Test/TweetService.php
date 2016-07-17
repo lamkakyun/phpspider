@@ -7,6 +7,7 @@
  */
 namespace Spider\Test;
 
+use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerAwareInterface;
 use Zend\EventManager\EventManagerInterface;
 use ZendService\Twitter\Twitter;
@@ -15,6 +16,8 @@ class TweetService implements EventManagerAwareInterface {
 
     protected $twitter_config;
 
+    protected $eventManager;
+
     public function setConfig($config) {
         $this->twitter_config = $config;
     }
@@ -22,11 +25,17 @@ class TweetService implements EventManagerAwareInterface {
     public function setEventManager(EventManagerInterface $eventManager)
     {
         // TODO: Implement setEventManager() method.
+        $this->eventManager = $eventManager;
     }
 
     public function getEventManager()
     {
         // TODO: Implement getEventManager() method.
+        if (null == $this->eventManager) {
+            $this->eventManager = new EventManager();
+        }
+
+        return $this->eventManager;
     }
 
 
@@ -50,6 +59,9 @@ class TweetService implements EventManagerAwareInterface {
             } else {
                 echo 'Bingo!';
             }
+
+            // 触发sendTweet事件（用来发送邮件，记录日志等等操作）
+            $this->eventManager->trigger('sendTweet', null, array('content', $content));
 
         } catch (\Exception $e) {
             echo $e->getMessage();

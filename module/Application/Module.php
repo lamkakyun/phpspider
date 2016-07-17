@@ -10,21 +10,31 @@
 namespace Application;
 
 use Zend\Console\Adapter\AdapterInterface;
+use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
 use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
-class Module implements ConfigProviderInterface, AutoloaderProviderInterface, ConsoleUsageProviderInterface, ConsoleBannerProviderInterface
+class Module implements ConfigProviderInterface, AutoloaderProviderInterface, ConsoleUsageProviderInterface, ConsoleBannerProviderInterface, BootstrapListenerInterface
 {
-    public function onBootstrap(MvcEvent $e)
+//    public function onBootstrap(MvcEvent $e)
+//    {
+//        $eventManager        = $e->getApplication()->getEventManager();
+//        $moduleRouteListener = new ModuleRouteListener();
+//        $moduleRouteListener->attach($eventManager);
+//    }
+    public function onBootstrap(EventInterface $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
+        $eventManager->attach('sendTweet', function($e) {
+            var_dump($e);
+        });
     }
+
 
     public function getConfig()
     {
