@@ -12,22 +12,25 @@ use Zend\EventManager\EventManagerAwareInterface;
 use Zend\EventManager\EventManagerInterface;
 use ZendService\Twitter\Twitter;
 
-class TweetService implements EventManagerAwareInterface {
+class TweetService implements EventManagerAwareInterface
+{
 
     protected $twitter_config;
 
     protected $eventManager;
 
-    public function setConfig($config) {
+    public function setConfig($config)
+    {
         $this->twitter_config = $config;
     }
 
     public function setEventManager(EventManagerInterface $eventManager)
     {
         // TODO: Implement setEventManager() method.
-			$eventManager->addIdentifiers(array(
-				get_called_class()	
-			));
+        $eventManager->addIdentifiers(array(
+            __CLASS__,
+            get_called_class(),
+        ));
         $this->eventManager = $eventManager;
     }
 
@@ -49,22 +52,27 @@ class TweetService implements EventManagerAwareInterface {
                 throw new \Exception('no twitter config');
             }
 
-            $twitter = new Twitter($this->twitter_config);
-
-            $res = $twitter->accountVerifyCredentials();
-            if (!$res->isSuccess()) {
-                die('Something is wrong with my credentials!');
-            }
-
-            $res2 = $twitter->statuses->update($content);
-            if ($res2->isSuccess()) {
-                throw new \Exception('send tweet failed');
-            } else {
-                echo 'Bingo!';
-            }
-
-            // 触发sendTweet事件（用来发送邮件，记录日志等等操作）
+            $this->getEventManager()->attach('sendTweet', function ($e) {
+                var_dump($e);
+            });
             $this->getEventManager()->trigger('sendTweet', null, array('content', $content));
+
+//            $twitter = new Twitter($this->twitter_config);
+//
+//            $res = $twitter->accountVerifyCredentials();
+//            if (!$res->isSuccess()) {
+//                die('Something is wrong with my credentials!');
+//            }
+//
+//            $res2 = $twitter->statuses->update($content);
+//            if ($res2->isSuccess()) {
+//                throw new \Exception('send tweet failed');
+//            } else {
+//                echo 'Bingo!';
+//            }
+//
+//            // 触发sendTweet事件（用来发送邮件，记录日志等等操作）
+//            $this->getEventManager()->trigger('sendTweet', null, array('content', $content));
 
         } catch (\Exception $e) {
             echo $e->getMessage();

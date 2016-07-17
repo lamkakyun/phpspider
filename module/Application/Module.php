@@ -19,7 +19,7 @@ use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
-class Module implements ConfigProviderInterface, AutoloaderProviderInterface, ConsoleUsageProviderInterface, ConsoleBannerProviderInterface, BootstrapListenerInterface
+class Module implements ConfigProviderInterface, AutoloaderProviderInterface, ConsoleUsageProviderInterface, ConsoleBannerProviderInterface/*, BootstrapListenerInterface*/
 {
 //    public function onBootstrap(MvcEvent $e)
 //    {
@@ -27,16 +27,20 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface, Co
 //        $moduleRouteListener = new ModuleRouteListener();
 //        $moduleRouteListener->attach($eventManager);
 //    }
-    public function onBootstrap(EventInterface $e)
+    public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
 //         $eventManager->attach('sendTweet', function($e) {
 //             var_dump($e);
 //         });
-				$sharedEventManager = $eventManager->getSharedManager();
-				$sharedEventManager->attach('Spider\Test\TweetService', 'sendTweet', function($e) {
-						var_dump($e);	
-				});
+        $sharedEventManager = $eventManager->getSharedManager();
+        $sharedEventManager->attach('Spider\Test\TweetService', 'sendTweet', function($e) {
+            var_dump($e);
+        }, 100);
+
+//        $sharedEventManager->attach('Application\Service\ServiceInterface', 'sendTweet', function($e) {
+//            var_dump($e);
+//        }, 100);
     }
 
 
@@ -51,7 +55,7 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface, Co
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    'Spider' => getcwd() . '/library/Spider'
+                    'Spider'      => getcwd() . '/library/Spider',
                 ),
             ),
         );
