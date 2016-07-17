@@ -44,9 +44,11 @@ class TweetService implements EventManagerAwareInterface {
                 die('Something is wrong with my credentials!');
             }
 
-            $res2 = $twitter->statuses->update('Hello world!');
+            $res2 = $twitter->statuses->update($content);
             if ($res2->isSuccess()) {
                 throw new \Exception('send tweet failed');
+            } else {
+                echo 'Bingo!';
             }
 
         } catch (\Exception $e) {
