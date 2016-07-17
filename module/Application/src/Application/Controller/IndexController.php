@@ -195,9 +195,11 @@ class IndexController extends AbstractActionController
 //        var_dump($all_config['website']['log.lamkakyun.com']['username']);exit;
 
         $num = $request->getParam('num');
+//        var_dump($request->getParam('verbose'));exit;
+//        var_dump($request->getParams());exit;
 
         $method_name = "test$num";
-        $this->getTestService()->$method_name();
+        $this->getTestService()->$method_name($request->getParams());
     }
 
     public function setTestService($testService)

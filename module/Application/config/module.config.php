@@ -115,7 +115,7 @@ return array(
                 ),
                 'test' => array(
                     'options' => array(
-                        'route'    => 'test <num>',
+                        'route'    => 'test <num> [<other>] [--name=] [--content=] [--verbose|-v] [--fast] [all|deleted|locked|admin]',
                         'defaults' => array(
                             'controller' => 'Application\Controller\Index',
                             'action'     => 'test',
