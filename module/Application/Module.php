@@ -30,9 +30,13 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface, Co
     public function onBootstrap(EventInterface $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
-        $eventManager->attach('sendTweet', function($e) {
-            var_dump($e);
-        });
+//         $eventManager->attach('sendTweet', function($e) {
+//             var_dump($e);
+//         });
+				$sharedEventManager = $eventManager->getSharedManager();
+				$sharedEventManager->attach('Spider\Test\TweetService', 'sendTweet', function($e) {
+						var_dump($e);	
+				});
     }
 
 

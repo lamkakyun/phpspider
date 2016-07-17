@@ -25,6 +25,9 @@ class TweetService implements EventManagerAwareInterface {
     public function setEventManager(EventManagerInterface $eventManager)
     {
         // TODO: Implement setEventManager() method.
+			$eventManager->addIdentifiers(array(
+				get_called_class()	
+			));
         $this->eventManager = $eventManager;
     }
 
@@ -61,7 +64,7 @@ class TweetService implements EventManagerAwareInterface {
             }
 
             // 触发sendTweet事件（用来发送邮件，记录日志等等操作）
-            $this->eventManager->trigger('sendTweet', null, array('content', $content));
+            $this->getEventManager()->trigger('sendTweet', null, array('content', $content));
 
         } catch (\Exception $e) {
             echo $e->getMessage();
