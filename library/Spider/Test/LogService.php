@@ -44,6 +44,8 @@ class LogService implements EventManagerAwareInterface
         $logger = new Logger();
         $logger->addWriter($writer);
         $logger->info('console information message log!');
+
+        $this->getEventManager()->trigger('logConsole', null, array('content' => 'this is a test!'));
     }
 
     public function logFile($file = null)

@@ -9,6 +9,7 @@
 
 namespace Application;
 
+use Spider\Test\SendListener;
 use Zend\Console\Adapter\AdapterInterface;
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
@@ -26,6 +27,16 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface, Co
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        $shareManager = $eventManager->getSharedManager();
+        $shareManager->attach('Spider\Test\LogService', 'logConsole', function($e) {
+            echo "------------------------------\n";
+            echo "| this is a aynmous listener |\n";
+            echo "------------------------------\n";
+            var_dump($e);
+        });
+
+        $eventManager->attach(new SendListener());
     }
 //    public function onBootstrap(MvcEvent $e)
 //    {

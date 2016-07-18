@@ -10,11 +10,13 @@ namespace Application\Service;
 use PHPHtmlParser\Dom;
 use Spider\Test\Example;
 use Spider\Test\LogService;
+use Spider\Test\PublicService;
 use Spider\Test\TweetService;
 use Spider\Version;
 use Zend\Config\Config;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\EventManager\EventManager;
+use Zend\Http\Client;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\Sendmail;
 use Zend\Mail\Transport\Smtp;
@@ -110,7 +112,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -225,17 +227,146 @@ class TestService
 
 
     /**
-     * 尝试进行 登陆操作
+     * 不使用第三方类库实现登陆功能 (不成功)
      */
     public function test3()
     {
+//        $admin_url = 'https://www.zhihu.com';
+//        $res = PublicService::call_api($admin_url, [], 'get');
+        $config = $this->getConfig();
+
+        $admin_url = 'http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F';
+        $res = PublicService::call_api($admin_url, [], 'get');
+
+        if (!preg_match('/<form action="(.*?)"/', $res['data'], $matches)) {
+            die('login url failed!');
+        }
+
+        $login_url = $matches[1];
+
+        $post_data = $config['website']['loglamkakyuncom'];
+
+        $res = PublicService::call_api($login_url, $post_data);
+
+        var_dump($res);
+
+//        $admin_url = 'http://log.lamkakyun.com/admin';
+//
+//        $res2 = PublicService::call_api($admin_url);
+
+//        var_dump($res2);
+    }
+
+
+    /**
+     * 使用Zend Client尝试进行 登陆操作 (失败)
+     */
+    public function test4()
+    {
+        $config = $this->getConfig();
 
         $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
         // 使用 Zend_Config 读取配置会不会好一点
-        $username = self::$config['website']['loglamkakyuncom']['username'];
-        $password = self::$config['website']['loglamkakyuncom']['password'];
+//        $username = self::$config['website']['loglamkakyuncom']['username'];
+//        $password = self::$config['website']['loglamkakyuncom']['password'];
+
+        $http_client = new Client($url);
+        $http_client->setCookies([]);
+        $res = $http_client->send();
+
+        if (!preg_match('/<form action="(.*?)"/', $res->getBody(), $matches)) {
+            die('login url failed!');
+        }
+
+        $login_url = $matches[1];
+
+        $http_client->resetParameters();
+
+        $post_data = $config['website']['loglamkakyuncom'];
+
+        $http_client->setUri($login_url);
+        $http_client->setMethod('POST');
+        $http_client->setParameterPost($post_data);
+        $http_client->setOptions(array(
+            'maxredirects'    => 10,
+            'strictredirects' => true,
+            'timeout'         => 30,
+            'keepalive'       => true,
+//            'encodecookies'   => true,
+        ));
 
 
-//        \Requests::request()
+        $res2 = $http_client->send();
+
+        var_dump($http_client->getCookies());
+//        var_dump($res2->getHeaders());
+//        var_dump($res2->getContent());
+        var_dump($res2->getStatusCode());
+
+        $admin_url = 'http://log.lamkakyun.com/admin/manage-posts.php';
+        $http_client->resetParameters();
+        $http_client->setUri($admin_url);
+        $res3 = $http_client->send();
+
+        var_dump($res3->getBody());
     }
+
+
+    /**
+     * 使用Zend Client尝试进行 登陆操作(失败)
+     */
+    public function test5()
+    {
+        $config = $this->getConfig();
+        $admin_url = 'http://log.lamkakyun.com/admin/manage-posts.php';
+
+        $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
+        $client = new Client($url, [
+            'keepalive' => true,
+        ]);
+
+        $res = $client->send();
+
+        if (!preg_match('/<form action="(.*?)"/', $res->getBody(), $matches)) {
+            die('login url failed!');
+        }
+
+        $login_url = $matches[1];
+
+        if (isset($_SESSION['cookiejar']) &&
+            $_SESSION['cookiejar'] instanceof \Zend\Http\Cookies
+        ) {
+
+            $cookieJar = $_SESSION['cookiejar'];
+        } else {
+            // If we don't, authenticate
+            // and store cookies
+            $client->resetParameters(true);
+            $client->setUri($login_url);
+
+//            var_dump($config['website']['loglamkakyuncom']);exit;
+//            $res = PublicService::call_api($login_url, $config['website']['loglamkakyuncom']);
+//            var_dump($res);exit;
+
+            $client->setParameterPost($config['website']['loglamkakyuncom']);
+            $response = $client->setMethod('POST')->send();
+
+//            var_dump($response->getStatusCode());exit;
+            $cookieJar = \Zend\Http\Cookies::fromResponse($response, $admin_url);
+
+            // Now, clear parameters and set the URI to the original one
+            // (note that the cookies that were set by the server are now
+            // stored in the jar)
+            $client->resetParameters();
+            $client->setUri($admin_url);
+
+            $client->setCookies($cookieJar->getMatchingCookies($client->getUri()));
+            $response = $client->setMethod('GET')->send();
+            $_SESSION['cookiejar'] = $cookieJar;
+
+//            var_dump($response->getBody());
+        }
+    }
+
+
 }

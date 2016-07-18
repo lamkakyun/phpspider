@@ -38,7 +38,8 @@ class TweetService implements EventManagerAwareInterface
     {
         // TODO: Implement getEventManager() method.
         if (null == $this->eventManager) {
-            $this->eventManager = new EventManager(); // 通过setEventManager才是正确的，这是错误的语句
+//            $this->eventManager = new EventManager(); // 通过setEventManager才是正确的，这是错误的语句
+            $this->setEventManager(new EventManager());
         }
 
         return $this->eventManager;
