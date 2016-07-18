@@ -23,7 +23,7 @@ use Zend\Mail\Transport\SmtpOptions;
 /**
  * Class TestService
  * @package Application\Service
- * @desc 测试服务
+ * @desc    测试服务
  */
 class TestService
 {
@@ -110,7 +110,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -118,6 +118,7 @@ class TestService
 
     /**
      * 测试 console类 的可选参数
+     * 测试事件监听器
      * @param $config
      */
     public function test04($config)

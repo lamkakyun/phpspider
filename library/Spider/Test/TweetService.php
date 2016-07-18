@@ -38,7 +38,7 @@ class TweetService implements EventManagerAwareInterface
     {
         // TODO: Implement getEventManager() method.
         if (null == $this->eventManager) {
-            $this->eventManager = new EventManager();
+            $this->eventManager = new EventManager(); // 通过setEventManager才是正确的，这是错误的语句
         }
 
         return $this->eventManager;
@@ -52,27 +52,26 @@ class TweetService implements EventManagerAwareInterface
                 throw new \Exception('no twitter config');
             }
 
+            $twitter = new Twitter($this->twitter_config);
+
+            $res = $twitter->accountVerifyCredentials();
+            if (!$res->isSuccess()) {
+                die('Something is wrong with my credentials!');
+            }
+
+            $res2 = $twitter->statuses->update($content);
+            if ($res2->isSuccess()) {
+                throw new \Exception('send tweet failed');
+            } else {
+                echo 'Bingo!';
+            }
+
+            // 添加事件监听，在这里添加，是因为在Module-onBootstrap 中添加失败，没有效果
             $this->getEventManager()->attach('sendTweet', function ($e) {
                 var_dump($e);
             });
-            $this->getEventManager()->trigger('sendTweet', null, array('content', $content));
-
-//            $twitter = new Twitter($this->twitter_config);
-//
-//            $res = $twitter->accountVerifyCredentials();
-//            if (!$res->isSuccess()) {
-//                die('Something is wrong with my credentials!');
-//            }
-//
-//            $res2 = $twitter->statuses->update($content);
-//            if ($res2->isSuccess()) {
-//                throw new \Exception('send tweet failed');
-//            } else {
-//                echo 'Bingo!';
-//            }
-//
 //            // 触发sendTweet事件（用来发送邮件，记录日志等等操作）
-//            $this->getEventManager()->trigger('sendTweet', null, array('content', $content));
+            $this->getEventManager()->trigger('sendTweet', null, array('content', $content));
 
         } catch (\Exception $e) {
             echo $e->getMessage();

@@ -8,11 +8,35 @@
 
 namespace Spider\Test;
 
+use Zend\EventManager\EventManager;
+use Zend\EventManager\EventManagerAwareInterface;
+use Zend\EventManager\EventManagerInterface;
 use Zend\Log\Logger;
 use Zend\Log\Writer\Stream;
 
-class LogService
+class LogService implements EventManagerAwareInterface
 {
+
+    protected $eventManager;
+
+    public function setEventManager(EventManagerInterface $eventManager)
+    {
+        $eventManager->addIdentifiers(array(
+            get_called_class()
+        ));
+        $this->eventManager = $eventManager;
+    }
+
+    public function getEventManager()
+    {
+        if (null == $this->eventManager) {
+//            $this->eventManager = new EventManager();
+            $this->setEventManager(new EventManager());
+        }
+
+        return $this->eventManager;
+    }
+
 
     public function logConsole()
     {

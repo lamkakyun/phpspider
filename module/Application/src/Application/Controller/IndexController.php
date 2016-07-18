@@ -114,11 +114,17 @@ class IndexController extends AbstractActionController
         $config = $this->getServiceLocator()->get('Config');
         $qqmail_config = $config['qqmail'];
         try {
+
+            $request = $this->getRequest();
+            $content = $request->getQuery('content');
+
+            if (!isset($content) or empty($content)) throw new \Exception('please enter content!');
+
             $message = new \Zend\Mail\Message();
             $message->setBody('This ia the text of email.');
             $message->setFrom('756431672@qq.com', 'lamkakyun');
             $message->addTo('lamkakyun@gmail.com', 'jet');
-            $message->setSubject('TestSubject');
+            $message->setSubject($content);
 
             $smtp_options = new SmtpOptions();
             $smtp_options->setHost('smtp.qq.com')

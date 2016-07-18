@@ -21,27 +21,28 @@ use Zend\Mvc\MvcEvent;
 
 class Module implements ConfigProviderInterface, AutoloaderProviderInterface, ConsoleUsageProviderInterface, ConsoleBannerProviderInterface/*, BootstrapListenerInterface*/
 {
-//    public function onBootstrap(MvcEvent $e)
-//    {
-//        $eventManager        = $e->getApplication()->getEventManager();
-//        $moduleRouteListener = new ModuleRouteListener();
-//        $moduleRouteListener->attach($eventManager);
-//    }
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager = $e->getApplication()->getEventManager();
-//         $eventManager->attach('sendTweet', function($e) {
-//             var_dump($e);
-//         });
-        $sharedEventManager = $eventManager->getSharedManager();
-        $sharedEventManager->attach('Spider\Test\TweetService', 'sendTweet', function($e) {
-            var_dump($e);
-        }, 100);
-
-//        $sharedEventManager->attach('Application\Service\ServiceInterface', 'sendTweet', function($e) {
-//            var_dump($e);
-//        }, 100);
+        $eventManager        = $e->getApplication()->getEventManager();
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->attach($eventManager);
     }
+//    public function onBootstrap(MvcEvent $e)
+//    {
+//        $eventManager = $e->getApplication()->getEventManager();
+////         $eventManager->attach('sendTweet', function($e) {
+////             var_dump($e);
+////         });
+//
+////        $sharedEventManager = $eventManager->getSharedManager();
+////        $sharedEventManager->attach('Spider\Test\TweetService', 'sendTweet', function($e) {
+////            var_dump($e);
+////        }, 100);
+//
+////        $sharedEventManager->attach('Application\Service\ServiceInterface', 'sendTweet', function($e) {
+////            var_dump($e);
+////        }, 100);
+//    }
 
 
     public function getConfig()
