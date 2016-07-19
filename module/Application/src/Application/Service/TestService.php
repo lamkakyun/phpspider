@@ -10,6 +10,7 @@ namespace Application\Service;
 use PHPHtmlParser\Dom;
 use Spider\Test\Example;
 use Spider\Test\LogService;
+use Spider\Test\MyThread;
 use Spider\Test\PublicService;
 use Spider\Test\TweetService;
 use Spider\Version;
@@ -249,7 +250,7 @@ class TestService
             echo "=======================\n";
 //            var_dump($res2);exit;
             $crawler = new Crawler($res2['data']);
-            $crawler->filter('tbody td:nth-child(3)')->each(function($node) {
+            $crawler->filter('tbody td:nth-child(3)')->each(function ($node) {
                 var_dump(trim($node->text()));
             });
             exit;
@@ -317,7 +318,7 @@ class TestService
 
 //        var_dump($res3->getBody());
         $crawler = new Crawler($res3->getBody());
-        $crawler->filter('tbody td:nth-child(3)')->each(function($node) {
+        $crawler->filter('tbody td:nth-child(3)')->each(function ($node) {
             var_dump(trim($node->text()));
         });
     }
@@ -379,7 +380,12 @@ class TestService
 //        }
 //    }
 
-    public function test5() {
+
+    /**
+     * 使用 socket 实现登录
+     */
+    public function test5()
+    {
 
     }
 
@@ -444,9 +450,25 @@ class TestService
         $admin_url = "http://log.lamkakyun.com/admin/manage-posts.php";
         $crawler = $client->request('GET', $admin_url);
 //        var_dump($crawler->text());
-        $crawler->filter(".typecho-list-table > tbody td:nth-child(3)")->each(function($node) {
+        $crawler->filter(".typecho-list-table > tbody td:nth-child(3)")->each(function ($node) {
             var_dump(trim($node->text()));
         });
     }
 
+
+    public function test9()
+    {
+        for($i=0;$i<2;$i++){
+            $pool[] = new MyThread();
+        }
+
+        foreach($pool as $worker){
+            $worker->start();
+        }
+
+        // 父进程等待子进程执行完毕，才能继续执行
+        foreach($pool as $worker){
+            $worker->join();
+        }
+    }
 }
