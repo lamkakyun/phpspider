@@ -8,10 +8,13 @@
 namespace Application\Service;
 
 use PHPHtmlParser\Dom;
+use Spider\Test\CounterThread;
 use Spider\Test\Example;
+use Spider\Test\ExampleWorker;
 use Spider\Test\LogService;
 use Spider\Test\MyThread;
 use Spider\Test\PublicService;
+use Spider\Test\SqlQuery;
 use Spider\Test\TweetService;
 use Spider\Version;
 use Symfony\Component\DomCrawler\Crawler;
@@ -115,7 +118,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -456,19 +459,74 @@ class TestService
     }
 
 
+    /**
+     * 线程的使用 （基本使用）
+     */
     public function test9()
     {
-        for($i=0;$i<2;$i++){
+        for ($i = 0; $i < 2; $i++) {
             $pool[] = new MyThread();
         }
 
-        foreach($pool as $worker){
+        foreach ($pool as $worker) {
             $worker->start();
         }
 
         // 父进程等待子进程执行完毕，才能继续执行
-        foreach($pool as $worker){
+        foreach ($pool as $worker) {
             $worker->join();
         }
+    }
+
+    /**
+     * 线程 worker 和 stackable
+     * 将stackable实例，放到worker的stack里面，然后运行
+     */
+    public function test10()
+    {
+        $worker = new ExampleWorker();
+
+        $work1 = new SqlQuery('select * from album');
+        $worker->stack($work1);
+
+        $work2 = new SqlQuery('select * from posts');
+        $worker->stack($work2);
+
+        $worker->start();
+        $worker->shutdown();
+
+        var_dump($worker->isShutdown());
+    }
+
+    /**
+     * 测试互斥锁，制多个线程同一时刻只能有一个线程工作的情况下可以使用
+     */
+    public function test11()
+    {
+        $counter = 0;
+        $handle = fopen('/tmp/phpspider/counter.txt', 'w');
+        fwrite($handle, $counter);
+        fclose($handle);
+
+        // 没有互斥锁
+        echo "【没有互斥锁】\n";
+        for ($i = 0; $i < 50; $i++) {
+            $threads[$i] = new CounterThread();
+            $threads[$i]->start();
+        }
+
+        //加入互斥锁
+        echo "【加入互斥锁】\n";
+        $mutex = \Mutex::create(true);
+        for ($i=0;$i<50;$i++){
+            $threads[$i] = new CounterThread($mutex);
+            $threads[$i]->start();
+
+        }
+        \Mutex::unlock($mutex);
+        for ($i=0;$i<50;$i++){
+            $threads[$i]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
+        }
+        \Mutex::destroy($mutex);
     }
 }
