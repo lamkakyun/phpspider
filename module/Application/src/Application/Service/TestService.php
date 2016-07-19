@@ -13,6 +13,8 @@ use Spider\Test\LogService;
 use Spider\Test\PublicService;
 use Spider\Test\TweetService;
 use Spider\Version;
+use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\DomCrawler\Link;
 use Zend\Config\Config;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\EventManager\EventManager;
@@ -112,7 +114,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -227,7 +229,7 @@ class TestService
 
 
     /**
-     * 不使用第三方类库实现登陆功能 (不成功)
+     * 不使用第三方类库实现登陆功能 (不成功，将配置的username改为name即可)(已成功)
      */
     public function test3()
     {
@@ -239,7 +241,18 @@ class TestService
         $res = PublicService::call_api($admin_url, [], 'get');
 
         if (!preg_match('/<form action="(.*?)"/', $res['data'], $matches)) {
-            die('login url failed!');
+//            die('get login url failed!');
+            // 因为cookie存在，所以直接默认是已登录状态
+            $admin_url = 'http://log.lamkakyun.com/admin/manage-posts.php';
+            $res2 = PublicService::call_api($admin_url);
+
+            echo "=======================\n";
+//            var_dump($res2);exit;
+            $crawler = new Crawler($res2['data']);
+            $crawler->filter('tbody td:nth-child(3)')->each(function($node) {
+                var_dump(trim($node->text()));
+            });
+            exit;
         }
 
         $login_url = $matches[1];
@@ -249,17 +262,11 @@ class TestService
         $res = PublicService::call_api($login_url, $post_data);
 
         var_dump($res);
-
-//        $admin_url = 'http://log.lamkakyun.com/admin';
-//
-//        $res2 = PublicService::call_api($admin_url);
-
-//        var_dump($res2);
     }
 
 
     /**
-     * 使用Zend Client尝试进行 登陆操作 (失败)
+     * 使用Zend Client尝试进行 登陆操作 (失败，因为使用username，应该改为name)(已成功)
      */
     public function test4()
     {
@@ -308,65 +315,138 @@ class TestService
         $http_client->setUri($admin_url);
         $res3 = $http_client->send();
 
-        var_dump($res3->getBody());
+//        var_dump($res3->getBody());
+        $crawler = new Crawler($res3->getBody());
+        $crawler->filter('tbody td:nth-child(3)')->each(function($node) {
+            var_dump(trim($node->text()));
+        });
     }
 
 
     /**
      * 使用Zend Client尝试进行 登陆操作(失败)
      */
-    public function test5()
-    {
-        $config = $this->getConfig();
-        $admin_url = 'http://log.lamkakyun.com/admin/manage-posts.php';
+//    public function test5()
+//    {
+//        $config = $this->getConfig();
+//        $admin_url = 'http://log.lamkakyun.com/admin/manage-posts.php';
+//
+//        $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
+//        $client = new Client($url, [
+//            'keepalive' => true,
+//        ]);
+//
+//        $res = $client->send();
+//
+//        if (!preg_match('/<form action="(.*?)"/', $res->getBody(), $matches)) {
+//            die('login url failed!');
+//        }
+//
+//        $login_url = $matches[1];
+//
+//        if (isset($_SESSION['cookiejar']) &&
+//            $_SESSION['cookiejar'] instanceof \Zend\Http\Cookies
+//        ) {
+//
+//            $cookieJar = $_SESSION['cookiejar'];
+//        } else {
+//            // If we don't, authenticate
+//            // and store cookies
+//            $client->resetParameters(true);
+//            $client->setUri($login_url);
+//
+////            var_dump($config['website']['loglamkakyuncom']);exit;
+////            $res = PublicService::call_api($login_url, $config['website']['loglamkakyuncom']);
+////            var_dump($res);exit;
+//
+//            $client->setParameterPost($config['website']['loglamkakyuncom']);
+//            $response = $client->setMethod('POST')->send();
+//
+////            var_dump($response->getStatusCode());exit;
+//            $cookieJar = \Zend\Http\Cookies::fromResponse($response, $admin_url);
+//
+//            // Now, clear parameters and set the URI to the original one
+//            // (note that the cookies that were set by the server are now
+//            // stored in the jar)
+//            $client->resetParameters();
+//            $client->setUri($admin_url);
+//
+//            $client->setCookies($cookieJar->getMatchingCookies($client->getUri()));
+//            $response = $client->setMethod('GET')->send();
+//            $_SESSION['cookiejar'] = $cookieJar;
+//
+////            var_dump($response->getBody());
+//        }
+//    }
 
-        $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
-        $client = new Client($url, [
-            'keepalive' => true,
-        ]);
+    public function test5() {
 
-        $res = $client->send();
-
-        if (!preg_match('/<form action="(.*?)"/', $res->getBody(), $matches)) {
-            die('login url failed!');
-        }
-
-        $login_url = $matches[1];
-
-        if (isset($_SESSION['cookiejar']) &&
-            $_SESSION['cookiejar'] instanceof \Zend\Http\Cookies
-        ) {
-
-            $cookieJar = $_SESSION['cookiejar'];
-        } else {
-            // If we don't, authenticate
-            // and store cookies
-            $client->resetParameters(true);
-            $client->setUri($login_url);
-
-//            var_dump($config['website']['loglamkakyuncom']);exit;
-//            $res = PublicService::call_api($login_url, $config['website']['loglamkakyuncom']);
-//            var_dump($res);exit;
-
-            $client->setParameterPost($config['website']['loglamkakyuncom']);
-            $response = $client->setMethod('POST')->send();
-
-//            var_dump($response->getStatusCode());exit;
-            $cookieJar = \Zend\Http\Cookies::fromResponse($response, $admin_url);
-
-            // Now, clear parameters and set the URI to the original one
-            // (note that the cookies that were set by the server are now
-            // stored in the jar)
-            $client->resetParameters();
-            $client->setUri($admin_url);
-
-            $client->setCookies($cookieJar->getMatchingCookies($client->getUri()));
-            $response = $client->setMethod('GET')->send();
-            $_SESSION['cookiejar'] = $cookieJar;
-
-//            var_dump($response->getBody());
-        }
     }
 
+
+    /**
+     * 使用Goutte php 库来爬取知乎数据
+     */
+    public function test6()
+    {
+        $url = "https://www.zhihu.com/question/48602044";
+        $client = new \Goutte\Client();
+        $crawler = $client->request('GET', $url);
+        $crawler->filter('title')->each(function ($node) {
+            var_dump(trim($node->text())); // 输出标题
+        });
+
+        $crawler->filter('.zm-item-answer')->each(function ($node) {
+            echo "==================================================\n";
+            $node->filter('.author-link')->each(function ($node) {
+                var_dump($node->text());
+            });
+            $node->filter('.zm-editable-content')->each(function ($node) {
+                var_dump($node->text());
+            });
+            $node->filter('.zm-item-vote-info')->each(function ($node) {
+                var_dump($node->text());
+            });
+            echo "==================================================\n";
+        });
+    }
+
+
+    /**
+     * 使用 Goutte ， 来“点击”链接
+     */
+    public function test7()
+    {
+        $url = "http://log.lamkakyun.com/";
+        $client = new \Goutte\Client();
+        $crawler = $client->request('GET', $url);
+        $link = $crawler->selectLink('Zend Framework 1 Usage (2)')->link();
+        $crawler = $client->click($link);
+
+        // 点击链接后，获取链接地址的内容
+        var_dump($crawler->text());
+    }
+
+    /**
+     * 使用Goutee，提交表单
+     */
+    public function test8()
+    {
+        $config = $this->getConfig();
+
+        $url = "http://log.lamkakyun.com/admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F";
+        $client = new \Goutte\Client();
+        $crawler = $client->request('GET', $url);
+        $form = $crawler->selectButton('登录')->form(); // 寻找登录按钮，所在的表单
+        $crawler = $client->submit($form, $config['website']['loglamkakyuncom']);
+//        var_dump($crawler->text()); // 居然登录成功了！难道之前是因为 一直将 username 当作 name 所以登录不了吗？
+
+        $admin_url = "http://log.lamkakyun.com/admin/manage-posts.php";
+        $crawler = $client->request('GET', $admin_url);
+//        var_dump($crawler->text());
+        $crawler->filter(".typecho-list-table > tbody td:nth-child(3)")->each(function($node) {
+            var_dump(trim($node->text()));
+        });
+    }
 
 }
