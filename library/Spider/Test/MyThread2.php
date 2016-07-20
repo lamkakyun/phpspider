@@ -11,13 +11,13 @@ namespace Spider\Test;
 class MyThread2 extends \Thread
 {
 
-    // 线程同步，只能有一个线程进入synchronized 代码块 (但是这样，很明显的失败了)(成功了，因为必须加入join)
+    // 线程同步，只能有一个线程进入synchronized 代码块 (但是这样，很明显的失败了)
     public function run()
     {
-        $this->synchronized(function($thread) {
-            echo $thread->getThreadId() . " start ...\n";
-            sleep(rand(0,5));
-            echo $thread->getThreadId() . " end   ...\n";
-        }, $this);
+        $this->lock();
+        echo $this->getCurrentThreadId() . " start ...\n";
+        sleep(rand(0,3));
+        echo $this->getCurrentThreadId() . " end   ...\n";
+        $this->unlock();
     }
 }

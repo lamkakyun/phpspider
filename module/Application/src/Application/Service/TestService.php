@@ -611,10 +611,6 @@ class TestService
         for ($i = 0; $i < 10 ; $i ++) {
             $thread[$i] = new MyThread2();
             $thread[$i]->start();
-//            $thread[$i]->synchronized(function($thread){
-//                $thread->done = true;
-//                $thread->notify();
-//            }, $thread[$i]);
 //            $thread[$i]->join();
         }
     }
