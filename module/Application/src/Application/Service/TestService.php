@@ -15,6 +15,7 @@ use Spider\Test\Example;
 use Spider\Test\ExampleWorker;
 use Spider\Test\LogService;
 use Spider\Test\MyThread;
+use Spider\Test\MyThread2;
 use Spider\Test\PublicService;
 use Spider\Test\SqlQuery;
 use Spider\Test\TweetService;
@@ -533,7 +534,7 @@ class TestService
     }
 
     /**
-     * 多线程与共享内存，没有使用任何锁，(仍然可能正常工作,没有sleep的情况下)，工作内存操作本身具备锁的功能。
+     * 多线程与共享内存，没有使用任何锁，(在没有sleep的情况下,仍然可能正常工作)，内存操作本身不具备锁的功能。
      * @desc 如果报错 shhm_attach函数不存在,则需要重新编译php
      * /configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysqli --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-libxml-dir --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-ldap --with-ldap-sasl --with-xmlrpc --enable-zip --enable-soap --without-pear --with-zlib --enable-pdo --with-pdo-mysql --with-mysql --enable-maintainer-zts --enable-sysvmsg=shared --enable-sysvshm=shared --enable-sysvsem=shared
      * 在php.ini添加 ;extension=sysvmsg.so;extension=sysvsem.so;extension=sysvshm.so
@@ -579,7 +580,9 @@ class TestService
 
         for ($i = 0; $i < 100; $i ++) {
             $threads[ $i ]->start();
+            $threads[$i]->join();
         }
+
 
 //        for ($i = 0; $i < 100; $i ++) {
 //            var_dump($threads[ $i ]->isWaiting());
@@ -595,10 +598,24 @@ class TestService
 //            var_dump($threads[ $i ]->isWaiting());
 //        }
 
-        for ($i = 0; $i < 100; $i ++) {
-            $threads[ $i ]->join();
-        }
+
         shm_remove($shmid);
         shm_detach($shmid);
+    }
+
+    /**
+     * 测试同步块问题
+     */
+    public function test14()
+    {
+        for ($i = 0; $i < 10 ; $i ++) {
+            $thread[$i] = new MyThread2();
+            $thread[$i]->start();
+//            $thread[$i]->synchronized(function($thread){
+//                $thread->done = true;
+//                $thread->notify();
+//            }, $thread[$i]);
+//            $thread[$i]->join();
+        }
     }
 }

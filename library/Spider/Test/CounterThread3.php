@@ -21,12 +21,14 @@ class CounterThread3 extends \Thread
     public function run()
     {
         $this->synchronized(function ($thread) {
-            $thread->wait();
+            echo $thread->getCurrentThreadId() . "  start\n";
+            sleep(rand(0,5));
+            echo $thread->getCurrentThreadId() . "  end\n";
         }, $this);
 
-        $counter = shm_get_var($this->shmid, $this->shmkey);
-        $counter ++;
-        shm_put_var($this->shmid, $this->shmkey, $counter);
-        printf("Thread #%lu says: %s\n", $this->getThreadId(),$counter);
+//        $counter = shm_get_var($this->shmid, $this->shmkey);
+//        $counter ++;
+//        shm_put_var($this->shmid, $this->shmkey, $counter);
+//        printf("Thread #%lu says: %s\n", $this->getThreadId(),$counter);
     }
 }
