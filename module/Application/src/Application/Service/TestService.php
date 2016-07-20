@@ -9,6 +9,8 @@ namespace Application\Service;
 
 use PHPHtmlParser\Dom;
 use Spider\Test\CounterThread;
+use Spider\Test\CounterThread2;
+use Spider\Test\CounterThread3;
 use Spider\Test\Example;
 use Spider\Test\ExampleWorker;
 use Spider\Test\LogService;
@@ -118,7 +120,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -464,7 +466,7 @@ class TestService
      */
     public function test9()
     {
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 2; $i ++) {
             $pool[] = new MyThread();
         }
 
@@ -510,23 +512,93 @@ class TestService
 
         // 没有互斥锁
         echo "【没有互斥锁】\n";
-        for ($i = 0; $i < 50; $i++) {
-            $threads[$i] = new CounterThread();
-            $threads[$i]->start();
+        for ($i = 0; $i < 50; $i ++) {
+            $threads[ $i ] = new CounterThread();
+            $threads[ $i ]->start();
         }
 
         //加入互斥锁
         echo "【加入互斥锁】\n";
         $mutex = \Mutex::create(true);
-        for ($i=0;$i<50;$i++){
-            $threads[$i] = new CounterThread($mutex);
-            $threads[$i]->start();
+        for ($i = 0; $i < 50; $i ++) {
+            $threads[ $i ] = new CounterThread($mutex);
+            $threads[ $i ]->start();
 
         }
         \Mutex::unlock($mutex);
-        for ($i=0;$i<50;$i++){
-            $threads[$i]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
+        for ($i = 0; $i < 50; $i ++) {
+            $threads[ $i ]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
         }
         \Mutex::destroy($mutex);
+    }
+
+    /**
+     * 多线程与共享内存，没有使用任何锁，(仍然可能正常工作,没有sleep的情况下)，工作内存操作本身具备锁的功能。
+     * @desc 如果报错 shhm_attach函数不存在,则需要重新编译php
+     * /configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysqli --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-libxml-dir --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-ldap --with-ldap-sasl --with-xmlrpc --enable-zip --enable-soap --without-pear --with-zlib --enable-pdo --with-pdo-mysql --with-mysql --enable-maintainer-zts --enable-sysvmsg=shared --enable-sysvshm=shared --enable-sysvsem=shared
+     * 在php.ini添加 ;extension=sysvmsg.so;extension=sysvsem.so;extension=sysvshm.so
+     */
+    public function test12()
+    {
+        $tmp = tempnam(__FILE__, 'PHP');
+        $key = ftok($tmp, 'a');
+        $shmid = shm_attach($key); // 创建共享内存
+        $shmkey = 1;
+        $counter = 0;
+        shm_put_var($shmid, $shmkey, $counter); // key = 1 put入数据 $counter的值
+
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[] = new CounterThread2($shmid, $shmkey);
+        }
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->start();
+        }
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->join();
+        }
+        shm_remove($shmid);
+        shm_detach($shmid);
+    }
+
+    /**
+     * 线程同步 (失败，counter 错误)
+     * @desc 有些场景我们不希望 thread->start() 就开始运行程序，而是希望线程等待我们的命令。$thread->wait();测作用是 thread->start()后线程并不会立即运行，只有收到 $thread->notify(); 发出的信号后才运行
+     */
+    public function test13()
+    {
+        $tmp = tempnam(__FILE__, 'PHP');
+        $key = ftok($tmp, 'a');
+        $shmid = shm_attach($key);
+        $shmkey = 1;
+        $counter = 0;
+        shm_put_var($shmid, $shmkey, $counter);
+
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[] = new CounterThread3($shmid, $shmkey);
+        }
+
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->start();
+        }
+
+//        for ($i = 0; $i < 100; $i ++) {
+//            var_dump($threads[ $i ]->isWaiting());
+//        }
+
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->synchronized(function ($thread) {
+                $thread->notify();
+            }, $threads[ $i ]);
+        }
+
+//        for ($i = 0; $i < 100; $i ++) {
+//            var_dump($threads[ $i ]->isWaiting());
+//        }
+
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->join();
+        }
+        shm_remove($shmid);
+        shm_detach($shmid);
     }
 }
