@@ -520,7 +520,7 @@ class TestService
 
         //加入互斥锁
         echo "【加入互斥锁】\n";
-        $mutex = \Mutex::create(true);
+
         for ($i = 0; $i < 50; $i ++) {
             $threads[ $i ] = new CounterThread($mutex);
             $threads[ $i ]->start();
