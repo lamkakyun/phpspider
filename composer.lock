@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "33e7ac2188d03ad2c87a22e76779f688",
-    "content-hash": "6816816d538024d86f3be5c980a150a0",
+    "hash": "5e804029891eb304508140b871bd5303",
+    "content-hash": "a217b0cf44fe6dd80414f385fc9cb1b0",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1997,6 +1997,52 @@
                 "validate"
             ],
             "time": "2015-08-24 13:29:44"
+        },
+        {
+            "name": "workerman/workerman",
+            "version": "v3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/Workerman.git",
+                "reference": "72dcfe49b70566be36cca7426542ea21dec2197b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/walkor/Workerman/72dcfe49b70566be36cca7426542ea21dec2197b.zip",
+                "reference": "72dcfe49b70566be36cca7426542ea21dec2197b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "suggest": {
+                "ext-libevent": "For better performance."
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Workerman\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "walkor",
+                    "email": "walkor@workerman.net",
+                    "homepage": "http://www.workerman.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2016-07-01 12:40:31"
         },
         {
             "name": "zendframework/zend-authentication",

@@ -76,6 +76,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         ),
         'W' => 
         array (
+            'Workerman\\' => 10,
             'Webmozart\\Assert\\' => 17,
         ),
         'S' => 
@@ -322,6 +323,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'Zend\\Authentication\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-authentication/src',
+        ),
+        'Workerman\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/workerman',
         ),
         'Webmozart\\Assert\\' => 
         array (

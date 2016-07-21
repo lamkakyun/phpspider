@@ -7,8 +7,9 @@
     "zendframework/zftool" : "v0.1.0",
     "rmccue/requests" : "v1.6.1",
     "paquettg/php-html-parser" : "1.7.0",
-    "zendframework/zendservice-twitter": "^2.1",
-    "fabpot/goutte": "^3.1"
+    "zendframework/zendservice-twitter" : "^2.1",
+    "fabpot/goutte" : "^3.1",
+    "workerman/workerman" : "v3.3.3"
   },
   "license" : "BSD-3-Clause",
   "keywords" : [ "framework", "zf2" ],
