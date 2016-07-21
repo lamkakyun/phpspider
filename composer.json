@@ -9,7 +9,9 @@
     "paquettg/php-html-parser" : "1.7.0",
     "zendframework/zendservice-twitter" : "^2.1",
     "fabpot/goutte" : "^3.1",
-    "workerman/workerman" : "v3.3.3"
+    "workerman/workerman" : "v3.3.3",
+    "snoopy/snoopy" : "2.0",
+    "simpletest/simpletest" : "v1.1.7"
   },
   "license" : "BSD-3-Clause",
   "keywords" : [ "framework", "zf2" ],

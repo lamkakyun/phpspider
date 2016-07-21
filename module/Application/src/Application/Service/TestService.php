@@ -8,6 +8,7 @@
 namespace Application\Service;
 
 use PHPHtmlParser\Dom;
+use Snoopy\Snoopy;
 use Spider\Test\CounterThread;
 use Spider\Test\CounterThread2;
 use Spider\Test\CounterThread3;
@@ -521,6 +522,7 @@ class TestService
         //加入互斥锁
         echo "【加入互斥锁】\n";
 
+        $mutex = \Mutex::create(true);
         for ($i = 0; $i < 50; $i ++) {
             $threads[ $i ] = new CounterThread($mutex);
             $threads[ $i ]->start();
@@ -580,7 +582,7 @@ class TestService
 
         for ($i = 0; $i < 100; $i ++) {
             $threads[ $i ]->start();
-            $threads[$i]->join();
+            $threads[ $i ]->join();
         }
 
 
@@ -608,10 +610,22 @@ class TestService
      */
     public function test14()
     {
-        for ($i = 0; $i < 10 ; $i ++) {
-            $thread[$i] = new MyThread2();
-            $thread[$i]->start();
+        for ($i = 0; $i < 10; $i ++) {
+            $thread[ $i ] = new MyThread2();
+            $thread[ $i ]->start();
 //            $thread[$i]->join();
         }
     }
+
+    /**
+     * 尝试登录知乎 (失败， Symfony-Crawler, Snoopy, SimpleBrowser 均是失败告终，好失败啊)
+     */
+    public function test15()
+    {
+        $url = "https://www.zhihu.com#signin";
+        $browser = new \SimpleBrowser();
+        $str = $browser->get($url);
+        var_dump($str);
+    }
+
 }
