@@ -7,3 +7,6 @@
 2016-07-21 14:17:43 pid:8725 Workerman[workman_websocket.php] start in DEBUG mode
 2016-07-21 14:26:50 pid:8725 Workerman[workman_websocket.php] Stopping ...
 2016-07-21 14:26:50 pid:8725 Workerman[workman_websocket.php] has been stopped
+2016-07-22 10:53:36 pid:2215 Workerman[workman_id.php] start in DEBUG mode
+2016-07-22 10:53:49 pid:2215 Workerman[workman_id.php] Stopping ...
+2016-07-22 10:53:49 pid:2215 Workerman[workman_id.php] has been stopped
