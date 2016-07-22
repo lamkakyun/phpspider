@@ -13,3 +13,6 @@
 2016-07-22 00:18:38 pid:10972 Workerman[workman_text.php] start in DEBUG mode
 2016-07-22 00:20:06 pid:10972 Workerman[workman_text.php] Stopping ...
 2016-07-22 00:20:06 pid:10972 Workerman[workman_text.php] has been stopped
+2016-07-22 10:53:36 pid:2215 Workerman[workman_id.php] start in DEBUG mode
+2016-07-22 10:53:49 pid:2215 Workerman[workman_id.php] Stopping ...
+2016-07-22 10:53:49 pid:2215 Workerman[workman_id.php] has been stopped
