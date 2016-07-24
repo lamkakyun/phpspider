@@ -11,7 +11,7 @@ function print_line($fd, $events, $arg) {
     $max_requests ++;
 
     if ($max_requests == 10) {
-        // 处理10吃事件请求后退出程序
+        // 处理10起事件请求后退出程序
         event_base_loopexit($arg[1]);
     }
     echo fgets($fd);

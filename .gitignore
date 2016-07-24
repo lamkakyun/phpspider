@@ -2,3 +2,4 @@ config/autoload/local.php
 .settings
 .idea
 .project
+vendor/workerman/workerman.log
