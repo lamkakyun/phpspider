@@ -9,11 +9,15 @@
 namespace Spider\Test;
 
 use Symfony\Component\DomCrawler\Crawler;
+use Zend\Cache\Storage\Adapter\AbstractAdapter;
+use Zend\Cache\Storage\Adapter\Redis;
 
 class Zhihu
 {
 
     private static $server = "ssl://www.zhihu.com:443";
+
+    private static $redis;
 
     /**
      * 删除Accept-Encoding: gzip, deflate, br
@@ -214,7 +218,7 @@ HEADER;
         $content = file_get_contents(self::$tmpfile);
 
         $crawler = new Crawler($content);
-        $crawler->filter('.author-link')->each(function($node) {
+        $crawler->filter('.author-link')->each(function ($node) {
             echo $node->text() . "\n";
         });
     }
@@ -228,5 +232,27 @@ HEADER;
         }
 
         return $ret_url;
+    }
+
+    public static function setRedis(AbstractAdapter $redis)
+    {
+        self::$redis = $redis;
+    }
+
+    public static function getAnswerAuthorInfo()
+    {
+//        self::$redis->setItem('hello', 'world');
+//        exit;
+
+        $topic_url = "https://www.zhihu.com/topics";
+        self::requestGet($topic_url);
+        $content = file_get_contents(self::$tmpfile);
+        $crawler = new Crawler($content);
+        $crawler->filter('.item > .blk > a:first-child')->each(function ($node) {
+            echo $node->attr('href') . "\n";
+            $node->filter('strong')->each(function ($n) {
+                echo $n->text() . "\n";
+            });
+        });
     }
 }

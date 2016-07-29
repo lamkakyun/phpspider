@@ -12,5 +12,15 @@
  */
 
 return array(
-    // ...
+    'redis-config' => array (
+        'adapter' => array (
+            'name' => 'redis',
+            'options' => array (
+                'server' => [
+                    'host' => '127.0.0.1',
+                    'port' => 6379,
+                ]
+            )
+        ),
+    )
 );

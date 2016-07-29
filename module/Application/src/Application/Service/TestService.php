@@ -18,12 +18,15 @@ use Spider\Test\LogService;
 use Spider\Test\MyThread;
 use Spider\Test\MyThread2;
 use Spider\Test\PublicService;
+use Spider\Test\RedisService;
 use Spider\Test\SqlQuery;
 use Spider\Test\TweetService;
 use Spider\Test\Zhihu;
 use Spider\Version;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\DomCrawler\Link;
+use Zend\Cache\Storage\Adapter\Redis;
+use Zend\Cache\StorageFactory;
 use Zend\Config\Config;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\EventManager\EventManager;
@@ -757,13 +760,35 @@ HEADER;
         }
     }
 
+    /**
+     * 获取知乎首页信息
+     */
     public function test17()
     {
         Zhihu::requestRoot();
     }
 
+    /**
+     * 模拟知乎获取更多回答 POST
+     */
     public function test18()
     {
         Zhihu::getFeedList();
+    }
+
+    /**
+     * 获取知乎所有用户的信息
+     * 1. 进入topic list, 加载所有topic, 保存到队列（redis）
+     * 2. 进入topic-top-answers，提取前10页所有问题
+     * 3. 进入问题,加载100个回答
+     * 4. 进入所有回答者的主页，获取回答者的信息,保存到数据库
+     */
+    public function test19()
+    {
+        $config = $this->getConfig();
+//        Zhihu::setRedis(new RedisService($config['redis-config']));
+//        Zhihu::setRedis(new Redis($config['redis-config']));
+        Zhihu::setRedis(StorageFactory::factory($config['redis-config']));
+        Zhihu::getAnswerAuthorInfo();
     }
 }
