@@ -777,7 +777,7 @@ HEADER;
     }
 
     /**
-     * 获取知乎所有用户的信息
+     * 获取知乎所有用户的信息(该方法被取消，因为测试写的太乱，仅用来测试)
      * 1. 进入topic list, 加载所有topic, 保存到队列（redis）
      * 2. 进入topic-top-answers，提取前10页所有问题
      * 3. 进入问题,加载100个回答
@@ -788,7 +788,23 @@ HEADER;
         $config = $this->getConfig();
 //        Zhihu::setRedis(new RedisService($config['redis-config']));
 //        Zhihu::setRedis(new Redis($config['redis-config']));
-        Zhihu::setRedis(StorageFactory::factory($config['redis-config']));
+//        Zhihu::setRedis(StorageFactory::factory($config['redis-config']));
+        Zhihu::setRedis($config['redis-config']);
+        Zhihu::getAnswerAuthorInfo_bak();
+    }
+
+
+    /**
+     * 获取知乎所有用户的信息(该方法被取消，因为测试写的太乱，仅用来测试)
+     * 1. 进入topic list, 加载所有topic, 保存到队列（redis）
+     * 2. 进入topic-top-answers，提取前10页所有问题
+     * 3. 进入问题,加载100个回答
+     * 4. 进入所有回答者的主页，获取回答者的信息,保存到数据库
+     */
+    public function test20()
+    {
+        $config = $this->getConfig();
+        Zhihu::setRedis($config['redis-config']);
         Zhihu::getAnswerAuthorInfo();
     }
 }

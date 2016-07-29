@@ -8,6 +8,7 @@
 
 namespace Spider\Test;
 
+use PHPHtmlParser\Dom;
 use Symfony\Component\DomCrawler\Crawler;
 use Zend\Cache\Storage\Adapter\AbstractAdapter;
 use Zend\Cache\Storage\Adapter\Redis;
@@ -17,7 +18,7 @@ class Zhihu
 
     private static $server = "ssl://www.zhihu.com:443";
 
-    private static $redis;
+    private static $redisConfig;
 
     /**
      * 删除Accept-Encoding: gzip, deflate, br
@@ -65,6 +66,8 @@ HEADER;
     private static $rootUrl = "https://www.zhihu.com/";
 
     private static $tmpfile = null;
+
+    private static $href;
 
     /**
      * 获取http get方法的请求头
@@ -234,25 +237,76 @@ HEADER;
         return $ret_url;
     }
 
-    public static function setRedis(AbstractAdapter $redis)
+    public static function setRedis(array $config)
     {
-        self::$redis = $redis;
+        self::$redisConfig = $config;
     }
 
-    public static function getAnswerAuthorInfo()
+    public static function getAnswerAuthorInfo_bak()
     {
 //        self::$redis->setItem('hello', 'world');
 //        exit;
 
+        $redis = new \Redis();
+
+        if (!$redis->connect(self::$redisConfig['adapter']['options']['server']['host'])) {
+            die('redis connect failed!');
+        }
+
+//        $redis->select(0);
+
         $topic_url = "https://www.zhihu.com/topics";
         self::requestGet($topic_url);
         $content = file_get_contents(self::$tmpfile);
-        $crawler = new Crawler($content);
-        $crawler->filter('.item > .blk > a:first-child')->each(function ($node) {
-            echo $node->attr('href') . "\n";
-            $node->filter('strong')->each(function ($n) {
-                echo $n->text() . "\n";
-            });
-        });
+//        $crawler = new Crawler($content);
+//        $crawler->filter('.item > .blk > a:first-child')->each(function ($node) {
+//            self::$href = $node->attr('href') . "\n";
+//            $node->filter('strong')->each(function ($n) {
+////                echo $n->text() . "\n";
+//                $text = $n->text();
+////                self::$redis->setItem(self::$href, $text);
+//
+//            });
+//        });
+
+        $dom = new Dom();
+        $dom->load($content);
+//        $collection = $dom->find('.item')->find('.blk')->find('a');
+//        $iterator = $collection->getIterator();
+//        echo '总共找到' . $iterator->count() . "个主题\n\n";
+
+        $collection = $dom->find('.item');
+
+        foreach($collection as $item) {
+            $a = $item->find('a')[0];
+//            echo "\n" . $a->outerHtml . "\n";
+//            echo "\n" . $a->getAttribute('href') . '-' . $a->find('strong')->text . "\n";
+
+            // 以二进制的数据存储到Redis 数据库中
+            $redis->set('topic:' . $a->getAttribute('href'), $a->find('strong')->text);
+        }
+
+//        $keys = $redis->getKeys('topic:*');
+//        foreach ($keys as $k) {
+//            echo $redis->get($k) . "\n";
+//        }
+//        var_dump($redis->getMultiple($keys));
+
+
+        $post_topic_url = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
+        $post_data = [
+            'method' => 'next',
+            'params' => '{"topic_id":253,"offset":20,"hash_id":"d6fe49b4e67984b7f402a7c64a826374"}'
+        ];
+
+        self::requestPost($post_topic_url, $post_data);
+
+        echo "Bingo!\n";
+    }
+
+
+    public static function getAnswerAuthorInfo()
+    {
+
     }
 }
