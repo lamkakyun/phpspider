@@ -20,6 +20,7 @@ use Spider\Test\MyThread2;
 use Spider\Test\PublicService;
 use Spider\Test\SqlQuery;
 use Spider\Test\TweetService;
+use Spider\Test\Zhihu;
 use Spider\Version;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\DomCrawler\Link;
@@ -389,11 +390,41 @@ class TestService
 
 
     /**
-     * 使用 socket 实现登录
+     * 使用 socket 实现登录 log.lamkakyun.com
+     * 妈的，只要我在我的浏览器登录，然后将header复制过来，就直接跳过登录了，厉害啊
      */
     public function test5()
     {
+        $server = "tcp://log.lamkakyun.com:80";
+        $handle = stream_socket_client($server, $errno, $errstr, 30);
 
+        if (!$handle) {
+            echo "$errstr ($errno)<br />\n";
+        } else {
+//            fwrite($handle, "GET /admin/login.php?referer=http%3A%2F%2Flog.lamkakyun.com%2Fadmin%2F HTTP/1.1\r\nHost: log.lamkakyun.com\r\nAccept: */*\r\nConnection: Close\r\n\r\n");
+
+            // 删除 Accept-Encoding:gzip, deflate, sdch
+            $header = <<<HEADER
+GET /admin/manage-posts.php HTTP/1.1
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language:zh-CN,zh;q=0.8,en;q=0.6,ja;q=0.4,zh-TW;q=0.2
+Cache-Control:no-cache
+Connection:keep-alive
+Cookie:read-mode=false; PHPSESSID=6op5rakrfuhhbm92aihrc655c2; __utmt=1; __utma=27437473.721865312.1469095701.1469678333.1469689437.3; __utmb=27437473.2.10.1469689437; __utmc=27437473; __utmz=27437473.1469095701.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); 6073f245f4708a3f9ac2e540bc40a8ad__typecho_uid=1; 6073f245f4708a3f9ac2e540bc40a8ad__typecho_authCode=%24T%24W4NCIvTuCf3916348c42531df0d5ae9122c333a12
+DNT:1
+Host:log.lamkakyun.com
+Pragma:no-cache
+Referer:http://log.lamkakyun.com/admin/
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\r\n\r\n
+HEADER;
+
+            fwrite($handle, $header);
+            while (!feof($handle)) {
+                echo fgets($handle, 1024);
+            }
+            fclose($handle);
+        }
     }
 
 
@@ -619,13 +650,120 @@ class TestService
 
     /**
      * 尝试登录知乎 (失败， Symfony-Crawler, Snoopy, SimpleBrowser 均是失败告终，好失败啊)
+     * 终于使用socket 直接跳过登录，直接在浏览器中登录，复制header 即可
      */
     public function test15()
     {
-        $url = "https://www.zhihu.com#signin";
-        $browser = new \SimpleBrowser();
-        $str = $browser->get($url);
-        var_dump($str);
+        $server = "ssl://www.zhihu.com:443";
+        $header = <<<HEADER
+GET / HTTP/1.1
+Host: www.zhihu.com
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,ja;q=0.4,zh-TW;q=0.2
+Cookie: d_c0="ADBArfM-QwqPTqg-fC-fCRMlvCLIC_NyOoM=|1469091488"; q_c1=3009d73c3b36406ebac30f8e6f826b4d|1469091488000|1469091488000; _za=cf577d06-dcb1-41dc-b1c5-77f5bd7c0389; _zap=5682cae2-c2fe-4ae5-9b57-13e8ec7663e0; l_cap_id="NmM0MzNlZTg0ZjhkNDQxMWE3ZjZmZmRiODI4YTdjNjM=|1469430453|b3eb287b02f4769e35cb31f69fee8a964056cb54"; cap_id="NGVmMjFlZjE1NzdhNDIxMjg5NDczZjdkZmZlZDFjYWQ=|1469430453|03fcb96ca89fe4fbb43d5cea45824c7d5a52c6cc"; login="NDdlMjY5Njc5ZTY3NDc0OTgxOTVhN2FiMTVkNmQ2NTM=|1469430461|8f0436ae675f3b000bec5943012c545e7b6945a9"; z_c0=Mi4wQUFCQU5tb3lBQUFBTUVDdDh6NURDaGNBQUFCaEFsVk52VWU5VndDVmhxbmxIVy1mb2w3V19qQkVwZlBVMDI4NFpB|1469430461|0d33157bb390bf97ba4c31d383c0f54c520748c6; _xsrf=4d9ef178241f9f64a2bdabf95f41608b; a_t="2.0AABANmoyAAAXAAAAZce_VwAAQDZqMgAAADBArfM-QwoXAAAAYQJVTb1HvVcAlYap5R1vn6Je1v4wRKXz1NNvOGSYVOG657GSrX2MO-Ozi35N2euVsA=="; s-q=%E6%AC%A7%E9%98%B3%E9%94%8B; s-i=13; sid=m8l66a99; __utma=51854390.2104039469.1469688017.1469688017.1469695819.2; __utmb=51854390.6.10.1469695819; __utmc=51854390; __utmz=51854390.1469688017.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmv=51854390.100-1|2=registration_date=20140706=1^3=entry_date=20140706=1\r\n\r\n
+HEADER;
+
+        $handle = stream_socket_client($server, $errno, $errstr, 30);
+        fwrite($handle, $header);
+        while (!feof($handle)) {
+            $_str = fgets($handle, 1024);
+            if (preg_match('#</body>#', $_str)) break;
+            echo $_str;
+        }
+
+        fclose($handle);
     }
 
+    private static function genHeaders($url, $method = 'GET', $data = [])
+    {
+        $url_parsed = parse_url($url);
+        $method = strtoupper($method);
+        if (!in_array($method, ['GET', 'POST'])) throw new \Exception('method error');
+
+        $header = <<<HEADER
+%s %s HTTP/1.1
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language:zh-CN,zh;q=0.8,en;q=0.6,ja;q=0.4,zh-TW;q=0.2
+Cache-Control:no-cache
+Connection:keep-alive
+DNT:1
+Host:%s
+Pragma:no-cache
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36
+HEADER;
+
+
+        $header = sprintf($header, $method, $url_parsed['path'] . (isset($url_parsed['query']) ? '?' . $url_parsed['query'] : ''), $url_parsed['host']);
+
+        if (!empty($data)) {
+            $header .= http_build_query($data);
+        }
+
+        return $header . "\r\n\r\n";
+    }
+
+    /**
+     * test5，重写，直接使用socket 登录, 失败，又是失败
+     */
+    public function test16()
+    {
+        $server = "tcp://log.lamkakyun.com:80";
+        $url = "http://log.lamkakyun.com/admin/";
+        $header = self::genHeaders($url);
+        $handle = stream_socket_client($server, $errno, $errstr, 30);
+
+        if (!$handle) {
+            echo "$errstr ($errno)<br />\n";
+        } else {
+
+
+            fwrite($handle, $header);
+            $redirect_url = null;
+            while (!feof($handle)) {
+                $_str = fgets($handle, 1024);
+                if (preg_match("/^Location:([\s\S]*)/", $_str, $matches)) {
+                    $redirect_url = trim($matches[1]);
+                    break;
+                }
+            }
+//            fclose($handle);
+
+            // 访问3xx的链接
+            $login_url = null;
+            if ($redirect_url) {
+                $_header = self::genHeaders($redirect_url);
+
+                fwrite($handle, $_header);
+
+                while (!feof($handle)) {
+                    $_str = fgets($handle, 1024);
+//                    echo 'output:  ' . $_str;
+                    if (preg_match('#<form action="([^"]*)"#', $_str, $matches)) {
+                        $login_url = $matches[1];
+                        break;
+                    }
+                }
+
+            }
+
+            fclose($handle);
+        }
+    }
+
+    public function test17()
+    {
+        Zhihu::requestRoot();
+    }
+
+    public function test18()
+    {
+        Zhihu::getFeedList();
+    }
 }
