@@ -503,17 +503,57 @@ HEADER;
 ////                    echo "\n" . $a->getAttribute('href') . '-' . $a->find('strong')->text . "\n";
 //                }
 
-                if ($i == 120) {
+//                if ($i == 120) {
+//
+////                    var_dump($all_content);exit;
+////                    $finder = new Query();
+////                    $dom = new Document($all_content, Document::DOC_HTML, 'UTF-8');
+////                    $results = $finder->execute('.item a[target="_blank"]', $dom, Query::TYPE_CSS);
+////                    foreach ($results as $r) {
+//////                    echo $r->attributes->getNamedItem('href')->textContent . ' - ' . iconv('UTF8', 'gb2312', $r->textContent);
+////                        echo $r->attributes->getNamedItem('href')->textContent . " - " . $r->textContent;
+////                    }
+//
+//
+////                    $crawler = new Crawler($all_content);
+////                    $crawler->filter('.item a[target="_blank"]')->each(function($node) {
+////                        echo $node->html();
+////                    });
+//
+////                    $domdocument = new \DOMDocument();
+////                    $domdocument->loadHTML($all_content);
+////                    $elements = $domdocument->getElementsByTagName('a');
+////                    foreach($elements as $e) {
+////                        echo $e->getAttribute('href') . " - " . $e->textContent . "\n";
+////                    }
+//
+//                    if (preg_match_all('/<a target="_blank"[\s\S]*?href="(.*?)>[\s\S]*?<\/a>/', $all_content, $matches)) {
+//
+//                        for($i = 0; $i < count($matches[0]) ; $i ++) {
+//                            var_dump($matches[1][$i]);
+//                            if (preg_match('/<strong>(.*?)<\/strong>/', $matches[0][$i], $_matches)) {
+//                                var_dump($_matches[1]);
+//                            }
+//                        }
+//
+//                    }
+//
+////                    if (preg_match_all('/<strong>(.*?)<\/strong>/', $all_content, $matches)) {
+////                        var_dump($matches);
+////                    }
+//
+//                    exit;
+//                }
 
-//                    var_dump($all_content);exit;
-                    $finder = new Query();
-                    $dom = new Document($all_content, Document::DOC_HTML, 'UTF-8');
-                    $results = $finder->execute('.item a[target="_blank"]', $dom, Query::TYPE_CSS);
-                    foreach ($results as $r) {
-//                    echo $r->attributes->getNamedItem('href')->textContent . ' - ' . iconv('UTF8', 'gb2312', $r->textContent);
-                        echo $r->attributes->getNamedItem('href')->textContent . " - " . $r->textContent;
+                if (preg_match_all('/<a target="_blank"[\s\S]*?href="(.*?)>[\s\S]*?<\/a>/', $all_content, $matches)) {
+
+                    for($_i = 0; $_i < count($matches[0]) ; $_i ++) {
+                        var_dump($matches[1][$_i]);
+                        if (preg_match('/<strong>(.*?)<\/strong>/', $matches[0][$_i], $_matches)) {
+                            var_dump($_matches[1]);
+                        }
                     }
-                    exit;
+
                 }
 
 
