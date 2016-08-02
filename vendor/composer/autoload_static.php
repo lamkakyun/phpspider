@@ -428,6 +428,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         ),
         'R' => 
         array (
+            'RollingCurl' => 
+            array (
+                0 => __DIR__ . '/..' . '/chuyskywalker/rolling-curl/src',
+            ),
             'Requests' => 
             array (
                 0 => __DIR__ . '/..' . '/rmccue/requests/library',

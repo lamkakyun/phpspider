@@ -227,7 +227,6 @@ class TestService
         }
 
 
-
         foreach ($urls as $key => $url) {
             $res[$key] = curl_multi_getcontent($con[$key]);
             curl_close($con[$key]); // 可以不使用curl_close 而使用curl_multi_remove_handle
@@ -249,6 +248,24 @@ class TestService
         ];
 
         $res = PublicService::rolling_curl($urls);
+        var_dump($res);
+    }
+
+
+    /**
+     * 尝试通过curl 使用本地socket5代理访问google
+     */
+    public function test010()
+    {
+        $url = 'https://twitter.com/';
+        $proxy = '127.0.0.1:10800';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5_HOSTNAME); // 本地只能用 CURLPROXY_SOCKS5_HOSTNAME
+        curl_setopt($ch, CURLOPT_PROXY, $proxy);
+        $res = curl_exec($ch);
+        curl_close($ch);
         var_dump($res);
     }
 
