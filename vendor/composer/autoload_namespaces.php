@@ -18,4 +18,5 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'PHPHtmlParser' => array($vendorDir . '/paquettg/php-html-parser/src'),
+    'Evenement' => array($vendorDir . '/evenement/evenement/src'),
 );

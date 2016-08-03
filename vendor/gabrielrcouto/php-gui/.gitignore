@@ -1,0 +1,9 @@
+composer.lock
+vendor/
+material/
+lazarus/backup/
+bin/*
+!bin/.gitkeep
+!bin/generatedoc
+phpunit.xml
+doc/

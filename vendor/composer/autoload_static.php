@@ -79,6 +79,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             'Workerman\\' => 10,
             'Webmozart\\Assert\\' => 17,
         ),
+        'T' => 
+        array (
+            'Test\\' => 5,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -87,6 +91,12 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Snoopy\\' => 7,
+        ),
+        'R' => 
+        array (
+            'React\\Stream\\' => 13,
+            'React\\EventLoop\\' => 16,
+            'React\\ChildProcess\\' => 19,
         ),
         'P' => 
         array (
@@ -101,6 +111,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'Gui\\' => 4,
             'Goutte\\' => 7,
         ),
         'F' => 
@@ -337,6 +348,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'Test\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gabrielrcouto/php-gui/test',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -361,6 +376,18 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         array (
             0 => __DIR__ . '/..' . '/snoopy/snoopy/src',
         ),
+        'React\\Stream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/stream/src',
+        ),
+        'React\\EventLoop\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/event-loop/src',
+        ),
+        'React\\ChildProcess\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/child-process/src',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
@@ -380,6 +407,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Gui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gabrielrcouto/php-gui/src',
         ),
         'Goutte\\' => 
         array (
@@ -460,6 +491,13 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
                 0 => __DIR__ . '/..' . '/paquettg/php-html-parser/src',
             ),
         ),
+        'E' => 
+        array (
+            'Evenement' => 
+            array (
+                0 => __DIR__ . '/..' . '/evenement/evenement/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -512,7 +550,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'DerivedOpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'DetachedTestCase' => __DIR__ . '/..' . '/simpletest/simpletest/detached.php',
         'DomTestCase' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester.php',
-        'Dummy' => __DIR__ . '/..' . '/simpletest/simpletest/test/mock_objects_test.php',
+        'Dummy' => __DIR__ . '/..' . '/simpletest/simpletest/test/visual_test.php',
         'DummyInterface' => __DIR__ . '/..' . '/simpletest/simpletest/test/interfaces_test.php',
         'DummyReferencedObject' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'DummyResource' => __DIR__ . '/..' . '/simpletest/simpletest/test/simpletest_test.php',
@@ -567,7 +605,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'NotAExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'NotEqualExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'NotIdenticalExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
-        'OpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
+        'OpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/visual/visual_errors.php',
         'OtherTestException' => __DIR__ . '/..' . '/simpletest/simpletest/test/exceptions_test.php',
         'OutsideMarginExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -1229,7 +1267,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'TestOfLiveAuthentication' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveBrowser' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveCookies' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
-        'TestOfLiveCssSelectors' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester/test/dom_tester_doc_test.php',
+        'TestOfLiveCssSelectors' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester/test/dom_tester_test.php',
         'TestOfLiveFetching' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveFrontControllerEmulation' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveHeaders' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
