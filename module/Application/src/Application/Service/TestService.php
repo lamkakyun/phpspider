@@ -7,7 +7,10 @@
  */
 namespace Application\Service;
 
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
 use PHPHtmlParser\Dom;
+use RollingCurl\RollingCurl;
 use Snoopy\Snoopy;
 use Spider\Test\CounterThread;
 use Spider\Test\CounterThread2;
@@ -126,7 +129,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -196,9 +199,9 @@ class TestService
         $mh = curl_multi_init(); // return multi handle
 
         foreach ($urls as $key => $url) {
-            $con[$key] = curl_init($url);
-            curl_setopt($con[$key], CURLOPT_RETURNTRANSFER, 1);
-            curl_multi_add_handle($mh, $con[$key]);
+            $con[ $key ] = curl_init($url);
+            curl_setopt($con[ $key ], CURLOPT_RETURNTRANSFER, 1);
+            curl_multi_add_handle($mh, $con[ $key ]);
         }
 
         // 在整个url请求期间是个死循环，它会轻易导致CPU占用100%。所以修改一下这段代码
@@ -215,7 +218,7 @@ class TestService
         //有数据的时候就不停调用curl_multi_exec，暂时没有数据就进入select阶段
         while ($active && $mrc == CURLM_OK) {
             // Wait for activity on any curl-connection
-            if (curl_multi_select($mh) == -1) {
+            if (curl_multi_select($mh) == - 1) {
                 usleep(1);
             }
 
@@ -228,8 +231,8 @@ class TestService
 
 
         foreach ($urls as $key => $url) {
-            $res[$key] = curl_multi_getcontent($con[$key]);
-            curl_close($con[$key]); // 可以不使用curl_close 而使用curl_multi_remove_handle
+            $res[ $key ] = curl_multi_getcontent($con[ $key ]);
+            curl_close($con[ $key ]); // 可以不使用curl_close 而使用curl_multi_remove_handle
         }
 
         print_r($res);
@@ -267,6 +270,81 @@ class TestService
         $res = curl_exec($ch);
         curl_close($ch);
         var_dump($res);
+    }
+
+
+    /**
+     * 使用rolling-curl (基本)
+     */
+    public function test011()
+    {
+        $rolling_curl = new RollingCurl();
+        $rolling_curl
+            ->get('https://www.baidu.com/')
+            ->get('https://www.zhihu.com/')
+            ->get('http://36kr.com/')
+            ->get('http://www.sina.com.cn/')
+            ->get('http://tencent.com/zh-cn/index.shtml')
+            ->setCallback(function (\RollingCurl\Request $request, \RollingCurl\RollingCurl $rollingCurl) {
+                if (preg_match("#<title>(.*)</title>#i", $request->getResponseText(), $out)) {
+                    $title = $out[1];
+                } else {
+                    $title = '[No Title Tag Found]';
+                }
+                echo "Fetch complete for (" . $request->getUrl() . ") $title " . PHP_EOL;
+            })
+            ->setSimultaneousLimit(3)
+            ->execute();
+    }
+
+    /**
+     * 使用rolling-curl (抓取百度500个标题和链接，关于搜索curl) (失败，因为google有反爬虫检测)
+     */
+    public function test012()
+    {
+        $rollingCurl = new \RollingCurl\RollingCurl();
+        $proxy = '127.0.0.1:10080';
+        $rollingCurl->addOptions([
+            CURLOPT_PROXYTYPE => CURLPROXY_SOCKS5_HOSTNAME,
+            CURLOPT_PROXY     => $proxy,
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+        ]);
+        for ($i = 0; $i <= 500; $i += 10) {
+            // https://www.google.com/search?q=curl&start=10
+            $rollingCurl->get('https://www.google.com/search?q=curl&start=' . $i);
+        }
+
+        $results = array();
+
+        $start = microtime(true);
+        echo "Fetching..." . PHP_EOL;
+        $rollingCurl
+            ->setCallback(function (\RollingCurl\Request $request, \RollingCurl\RollingCurl $rollingCurl) use (&$results) {
+                echo $request->getResponseText();
+                if (preg_match_all('#<h3 class="r"><a href="([^"]+)">(.*)</a></h3>#iU', $request->getResponseText(), $out)) {
+                    foreach ($out[1] as $idx => $url) {
+                        parse_str(parse_url($url, PHP_URL_QUERY), $params);
+                        $results[ $params['q'] ] = strip_tags($out[2][ $idx ]);
+                    }
+                }
+                echo "Fetch complete for (" . $request->getUrl() . ")" . PHP_EOL;
+            })
+            ->setSimultaneousLimit(10)
+            ->execute();;
+        echo "...done in " . (microtime(true) - $start) . PHP_EOL;
+
+        echo "All results: " . PHP_EOL;
+        print_r($results);
+    }
+
+
+    /**
+     * 使用facebook的webdriver来做爬虫
+     */
+    public function test013()
+    {
+        $host = 'http://localhost:4444/wd/hub'; // selenium-server 开启后的服务地址
+        $driver = RemoteWebDriver::create($host, DesiredCapabilities::chrome());
     }
 
 
@@ -591,7 +669,7 @@ HEADER;
      */
     public function test9()
     {
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 2; $i ++) {
             $pool[] = new MyThread();
         }
 
@@ -637,23 +715,23 @@ HEADER;
 
         // 没有互斥锁
         echo "【没有互斥锁】\n";
-        for ($i = 0; $i < 50; $i++) {
-            $threads[$i] = new CounterThread();
-            $threads[$i]->start();
+        for ($i = 0; $i < 50; $i ++) {
+            $threads[ $i ] = new CounterThread();
+            $threads[ $i ]->start();
         }
 
         //加入互斥锁
         echo "【加入互斥锁】\n";
 
         $mutex = \Mutex::create(true);
-        for ($i = 0; $i < 50; $i++) {
-            $threads[$i] = new CounterThread($mutex);
-            $threads[$i]->start();
+        for ($i = 0; $i < 50; $i ++) {
+            $threads[ $i ] = new CounterThread($mutex);
+            $threads[ $i ]->start();
 
         }
         \Mutex::unlock($mutex);
-        for ($i = 0; $i < 50; $i++) {
-            $threads[$i]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
+        for ($i = 0; $i < 50; $i ++) {
+            $threads[ $i ]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
         }
         \Mutex::destroy($mutex);
     }
@@ -673,14 +751,14 @@ HEADER;
         $counter = 0;
         shm_put_var($shmid, $shmkey, $counter); // key = 1 put入数据 $counter的值
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 100; $i ++) {
             $threads[] = new CounterThread2($shmid, $shmkey);
         }
-        for ($i = 0; $i < 100; $i++) {
-            $threads[$i]->start();
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->start();
         }
-        for ($i = 0; $i < 100; $i++) {
-            $threads[$i]->join();
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->join();
         }
         shm_remove($shmid);
         shm_detach($shmid);
@@ -699,13 +777,13 @@ HEADER;
         $counter = 0;
         shm_put_var($shmid, $shmkey, $counter);
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 100; $i ++) {
             $threads[] = new CounterThread3($shmid, $shmkey);
         }
 
-        for ($i = 0; $i < 100; $i++) {
-            $threads[$i]->start();
-            $threads[$i]->join();
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->start();
+            $threads[ $i ]->join();
         }
 
 
@@ -713,10 +791,10 @@ HEADER;
 //            var_dump($threads[ $i ]->isWaiting());
 //        }
 
-        for ($i = 0; $i < 100; $i++) {
-            $threads[$i]->synchronized(function ($thread) {
+        for ($i = 0; $i < 100; $i ++) {
+            $threads[ $i ]->synchronized(function ($thread) {
                 $thread->notify();
-            }, $threads[$i]);
+            }, $threads[ $i ]);
         }
 
 //        for ($i = 0; $i < 100; $i ++) {
@@ -733,9 +811,9 @@ HEADER;
      */
     public function test14()
     {
-        for ($i = 0; $i < 10; $i++) {
-            $thread[$i] = new MyThread2();
-            $thread[$i]->start();
+        for ($i = 0; $i < 10; $i ++) {
+            $thread[ $i ] = new MyThread2();
+            $thread[ $i ]->start();
 //            $thread[$i]->join();
         }
     }

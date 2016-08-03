@@ -12,7 +12,8 @@
     "workerman/workerman" : "v3.3.3",
     "snoopy/snoopy" : "2.0",
     "simpletest/simpletest" : "v1.1.7",
-    "chuyskywalker/rolling-curl": "^3.1"
+    "chuyskywalker/rolling-curl" : "^3.1",
+    "facebook/webdriver" : "1.1.2"
   },
   "license" : "BSD-3-Clause",
   "keywords" : [ "framework", "zf2" ],

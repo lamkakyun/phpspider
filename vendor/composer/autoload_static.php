@@ -103,6 +103,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             'GuzzleHttp\\' => 11,
             'Goutte\\' => 7,
         ),
+        'F' => 
+        array (
+            'Facebook\\WebDriver\\' => 19,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -381,6 +385,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
         ),
+        'Facebook\\WebDriver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/webdriver/lib',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -504,7 +512,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'DerivedOpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'DetachedTestCase' => __DIR__ . '/..' . '/simpletest/simpletest/detached.php',
         'DomTestCase' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester.php',
-        'Dummy' => __DIR__ . '/..' . '/simpletest/simpletest/test/visual_test.php',
+        'Dummy' => __DIR__ . '/..' . '/simpletest/simpletest/test/mock_objects_test.php',
         'DummyInterface' => __DIR__ . '/..' . '/simpletest/simpletest/test/interfaces_test.php',
         'DummyReferencedObject' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'DummyResource' => __DIR__ . '/..' . '/simpletest/simpletest/test/simpletest_test.php',
@@ -559,7 +567,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'NotAExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'NotEqualExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'NotIdenticalExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
-        'OpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/visual/visual_errors.php',
+        'OpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'OtherTestException' => __DIR__ . '/..' . '/simpletest/simpletest/test/exceptions_test.php',
         'OutsideMarginExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -1221,7 +1229,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'TestOfLiveAuthentication' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveBrowser' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveCookies' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
-        'TestOfLiveCssSelectors' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester/test/dom_tester_test.php',
+        'TestOfLiveCssSelectors' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester/test/dom_tester_doc_test.php',
         'TestOfLiveFetching' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveFrontControllerEmulation' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveHeaders' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
