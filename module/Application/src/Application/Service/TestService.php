@@ -126,7 +126,7 @@ class TestService
             $transport->send($message);
 
             echo 'bingo';
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -180,6 +180,95 @@ class TestService
         $content = $params['content'];
         $tweet->sendTweet($content);
     }
+
+
+    /**
+     * 测试curl的多线程用法
+     */
+    public function test07()
+    {
+        $urls = [
+            'https://www.baidu.com',
+            'https://www.bing.com',
+            'https://www.zhihu.com',
+        ];
+
+        $mh = curl_multi_init(); // return multi handle
+
+        foreach ($urls as $key => $url) {
+            $con[$key] = curl_init($url);
+            curl_setopt($con[$key], CURLOPT_RETURNTRANSFER, 1);
+            curl_multi_add_handle($mh, $con[$key]);
+        }
+
+        // 在整个url请求期间是个死循环，它会轻易导致CPU占用100%。所以修改一下这段代码
+//        do {
+//            $mrc = curl_multi_exec($mh, $active);
+//        } while($active);
+
+
+        // 让所有curl请求运行起来
+        do {
+            $mrc = curl_multi_exec($mh, $active); // $mrc 表示 multi request return code
+        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+
+        //有数据的时候就不停调用curl_multi_exec，暂时没有数据就进入select阶段
+        while ($active && $mrc == CURLM_OK) {
+            // Wait for activity on any curl-connection
+            if (curl_multi_select($mh) == -1) {
+                usleep(1);
+            }
+
+            // Continue to exec until curl is ready to
+            // give us more data
+            do {
+                $mrc = curl_multi_exec($mh, $active);
+            } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+        }
+
+
+        foreach ($urls as $key => $url) {
+            $res[$key] = curl_multi_getcontent($con[$key]);
+            curl_close($con[$key]); // 可以不使用curl_close 而使用curl_multi_remove_handle
+        }
+
+        print_r($res);
+    }
+
+
+    /**
+     * 参考网上的rolling php，写一个并发的curl
+     */
+    public function test09()
+    {
+        $urls = [
+            'https://www.baidu.com',
+            'https://www.bing.com',
+            'https://www.zhihu.com',
+        ];
+
+        $res = PublicService::rolling_curl($urls);
+        var_dump($res);
+    }
+
+
+    /**
+     * 尝试通过curl 使用本地socket5代理访问google
+     */
+    public function test010()
+    {
+        $url = 'https://twitter.com/';
+        $proxy = '127.0.0.1:10800';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5_HOSTNAME); // 本地只能用 CURLPROXY_SOCKS5_HOSTNAME
+        curl_setopt($ch, CURLOPT_PROXY, $proxy);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        var_dump($res);
+    }
+
 
     public function test1()
     {
@@ -502,7 +591,7 @@ HEADER;
      */
     public function test9()
     {
-        for ($i = 0; $i < 2; $i ++) {
+        for ($i = 0; $i < 2; $i++) {
             $pool[] = new MyThread();
         }
 
@@ -548,23 +637,23 @@ HEADER;
 
         // 没有互斥锁
         echo "【没有互斥锁】\n";
-        for ($i = 0; $i < 50; $i ++) {
-            $threads[ $i ] = new CounterThread();
-            $threads[ $i ]->start();
+        for ($i = 0; $i < 50; $i++) {
+            $threads[$i] = new CounterThread();
+            $threads[$i]->start();
         }
 
         //加入互斥锁
         echo "【加入互斥锁】\n";
 
         $mutex = \Mutex::create(true);
-        for ($i = 0; $i < 50; $i ++) {
-            $threads[ $i ] = new CounterThread($mutex);
-            $threads[ $i ]->start();
+        for ($i = 0; $i < 50; $i++) {
+            $threads[$i] = new CounterThread($mutex);
+            $threads[$i]->start();
 
         }
         \Mutex::unlock($mutex);
-        for ($i = 0; $i < 50; $i ++) {
-            $threads[ $i ]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
+        for ($i = 0; $i < 50; $i++) {
+            $threads[$i]->join(); // 也就是说，没有线程阻塞，主进程就会直接结束，导致死锁
         }
         \Mutex::destroy($mutex);
     }
@@ -584,14 +673,14 @@ HEADER;
         $counter = 0;
         shm_put_var($shmid, $shmkey, $counter); // key = 1 put入数据 $counter的值
 
-        for ($i = 0; $i < 100; $i ++) {
+        for ($i = 0; $i < 100; $i++) {
             $threads[] = new CounterThread2($shmid, $shmkey);
         }
-        for ($i = 0; $i < 100; $i ++) {
-            $threads[ $i ]->start();
+        for ($i = 0; $i < 100; $i++) {
+            $threads[$i]->start();
         }
-        for ($i = 0; $i < 100; $i ++) {
-            $threads[ $i ]->join();
+        for ($i = 0; $i < 100; $i++) {
+            $threads[$i]->join();
         }
         shm_remove($shmid);
         shm_detach($shmid);
@@ -610,13 +699,13 @@ HEADER;
         $counter = 0;
         shm_put_var($shmid, $shmkey, $counter);
 
-        for ($i = 0; $i < 100; $i ++) {
+        for ($i = 0; $i < 100; $i++) {
             $threads[] = new CounterThread3($shmid, $shmkey);
         }
 
-        for ($i = 0; $i < 100; $i ++) {
-            $threads[ $i ]->start();
-            $threads[ $i ]->join();
+        for ($i = 0; $i < 100; $i++) {
+            $threads[$i]->start();
+            $threads[$i]->join();
         }
 
 
@@ -624,10 +713,10 @@ HEADER;
 //            var_dump($threads[ $i ]->isWaiting());
 //        }
 
-        for ($i = 0; $i < 100; $i ++) {
-            $threads[ $i ]->synchronized(function ($thread) {
+        for ($i = 0; $i < 100; $i++) {
+            $threads[$i]->synchronized(function ($thread) {
                 $thread->notify();
-            }, $threads[ $i ]);
+            }, $threads[$i]);
         }
 
 //        for ($i = 0; $i < 100; $i ++) {
@@ -644,9 +733,9 @@ HEADER;
      */
     public function test14()
     {
-        for ($i = 0; $i < 10; $i ++) {
-            $thread[ $i ] = new MyThread2();
-            $thread[ $i ]->start();
+        for ($i = 0; $i < 10; $i++) {
+            $thread[$i] = new MyThread2();
+            $thread[$i]->start();
 //            $thread[$i]->join();
         }
     }

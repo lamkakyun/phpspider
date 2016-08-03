@@ -13,6 +13,7 @@ return array(
     'ZendDiagnostics\\' => array($vendorDir . '/zendframework/zenddiagnostics/src'),
     'ZendDiagnosticsTest\\' => array($vendorDir . '/zendframework/zenddiagnostics/tests'),
     'ZFTool\\' => array($vendorDir . '/zendframework/zftool/src'),
+    'RollingCurl' => array($vendorDir . '/chuyskywalker/rolling-curl/src'),
     'Requests' => array($vendorDir . '/rmccue/requests/library'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),

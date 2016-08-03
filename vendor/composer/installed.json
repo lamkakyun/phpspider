@@ -5432,7 +5432,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/walkor/Workerman/72dcfe49b70566be36cca7426542ea21dec2197b.zip",
+            "url": "https://api.github.com/repos/walkor/Workerman/zipball/72dcfe49b70566be36cca7426542ea21dec2197b",
             "reference": "72dcfe49b70566be36cca7426542ea21dec2197b",
             "shasum": ""
         },
@@ -5480,7 +5480,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/6c8a756c17a1a92a066c99860eb57922e8b723da.zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6c8a756c17a1a92a066c99860eb57922e8b723da",
             "reference": "6c8a756c17a1a92a066c99860eb57922e8b723da",
             "shasum": ""
         },
@@ -5560,7 +5560,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/PheRum/snoopy/660134bc1cfd52c00ded91928320dd4e775ff4d9.zip",
+            "url": "https://api.github.com/repos/PheRum/snoopy/zipball/660134bc1cfd52c00ded91928320dd4e775ff4d9",
             "reference": "660134bc1cfd52c00ded91928320dd4e775ff4d9",
             "shasum": ""
         },
@@ -5597,7 +5597,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://packagist.phpcomposer.com/files/simpletest/simpletest/2f8c466c114bdb9c11028a0c3e6d1380ae6a18dc.zip",
+            "url": "https://api.github.com/repos/simpletest/simpletest/zipball/2f8c466c114bdb9c11028a0c3e6d1380ae6a18dc",
             "reference": "2f8c466c114bdb9c11028a0c3e6d1380ae6a18dc",
             "shasum": ""
         },
@@ -5659,6 +5659,68 @@
             "selenium",
             "testing",
             "unit-test"
+        ]
+    },
+    {
+        "name": "chuyskywalker/rolling-curl",
+        "version": "3.1.0",
+        "version_normalized": "3.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/chuyskywalker/rolling-curl.git",
+            "reference": "fc1d28c221962f25e9615bd3991dd82732420c8c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/chuyskywalker/rolling-curl/zipball/fc1d28c221962f25e9615bd3991dd82732420c8c",
+            "reference": "fc1d28c221962f25e9615bd3991dd82732420c8c",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "lib-curl": "*",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-08-30 03:39:25",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "RollingCurl": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Jeff Minard",
+                "homepage": "http://jrm.cc/",
+                "role": "Developer"
+            },
+            {
+                "name": "Josh Fraser",
+                "email": "joshfraz@gmail.com",
+                "homepage": "http://joshfraser.com/",
+                "role": "Developer"
+            },
+            {
+                "name": "Alexander Makarov",
+                "email": "sam@rmcreative.ru",
+                "homepage": "http://rmcreative.ru/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Rolling-Curl: A non-blocking, non-dos multi-curl library for PHP",
+        "homepage": "https://github.com/chuyskywalker/rolling-curl",
+        "keywords": [
+            "asynchronous",
+            "curl",
+            "http",
+            "multi",
+            "parallel",
+            "requests"
         ]
     }
 ]
