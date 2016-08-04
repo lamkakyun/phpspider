@@ -8,9 +8,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
 {
     public static $files = array (
         '34901568a1e26d13dd475cb2c85e0284' => __DIR__ . '/..' . '/zendframework/zend-form/autoload/formElementManagerPolyfill.php',
+        'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
@@ -73,6 +74,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
             'Zend\\Cache\\' => 11,
             'Zend\\Barcode\\' => 13,
             'Zend\\Authentication\\' => 20,
+            'ZendDeveloperTools\\' => 19,
         ),
         'W' => 
         array (
@@ -95,8 +97,15 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'R' => 
         array (
             'React\\Stream\\' => 13,
+            'React\\Socket\\' => 13,
+            'React\\SocketClient\\' => 19,
+            'React\\Promise\\' => 14,
+            'React\\Http\\' => 11,
+            'React\\HttpClient\\' => 17,
             'React\\EventLoop\\' => 16,
+            'React\\Dns\\' => 10,
             'React\\ChildProcess\\' => 19,
+            'React\\Cache\\' => 12,
         ),
         'P' => 
         array (
@@ -340,6 +349,10 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-authentication/src',
         ),
+        'ZendDeveloperTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-developer-tools/src',
+        ),
         'Workerman\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/workerman',
@@ -380,13 +393,41 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         array (
             0 => __DIR__ . '/..' . '/react/stream/src',
         ),
+        'React\\Socket\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/socket/src',
+        ),
+        'React\\SocketClient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/socket-client/src',
+        ),
+        'React\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/promise/src',
+        ),
+        'React\\Http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/http/src',
+        ),
+        'React\\HttpClient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/http-client/src',
+        ),
         'React\\EventLoop\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/event-loop/src',
         ),
+        'React\\Dns\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/dns/src',
+        ),
         'React\\ChildProcess\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/child-process/src',
+        ),
+        'React\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/cache/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -550,7 +591,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'DerivedOpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'DetachedTestCase' => __DIR__ . '/..' . '/simpletest/simpletest/detached.php',
         'DomTestCase' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester.php',
-        'Dummy' => __DIR__ . '/..' . '/simpletest/simpletest/test/visual_test.php',
+        'Dummy' => __DIR__ . '/..' . '/simpletest/simpletest/test/mock_objects_test.php',
         'DummyInterface' => __DIR__ . '/..' . '/simpletest/simpletest/test/interfaces_test.php',
         'DummyReferencedObject' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'DummyResource' => __DIR__ . '/..' . '/simpletest/simpletest/test/simpletest_test.php',
@@ -605,7 +646,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'NotAExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'NotEqualExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'NotIdenticalExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
-        'OpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/visual/visual_errors.php',
+        'OpaqueContainer' => __DIR__ . '/..' . '/simpletest/simpletest/test/expectation_test.php',
         'OtherTestException' => __DIR__ . '/..' . '/simpletest/simpletest/test/exceptions_test.php',
         'OutsideMarginExpectation' => __DIR__ . '/..' . '/simpletest/simpletest/expectation.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -1267,7 +1308,7 @@ class ComposerStaticInit21ab68b0425d74fb0326f23f1f3e5093
         'TestOfLiveAuthentication' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveBrowser' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveCookies' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
-        'TestOfLiveCssSelectors' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester/test/dom_tester_test.php',
+        'TestOfLiveCssSelectors' => __DIR__ . '/..' . '/simpletest/simpletest/extensions/dom_tester/test/dom_tester_doc_test.php',
         'TestOfLiveFetching' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveFrontControllerEmulation' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',
         'TestOfLiveHeaders' => __DIR__ . '/..' . '/simpletest/simpletest/test/acceptance_test.php',

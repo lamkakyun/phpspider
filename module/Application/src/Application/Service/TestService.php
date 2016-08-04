@@ -312,7 +312,7 @@ class TestService
         $rollingCurl->addOptions([
             CURLOPT_PROXYTYPE => CURLPROXY_SOCKS5_HOSTNAME,
             CURLOPT_PROXY     => $proxy,
-            CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
         ]);
         for ($i = 0; $i <= 500; $i += 10) {
             // https://www.google.com/search?q=curl&start=10
@@ -367,7 +367,7 @@ class TestService
     {
         $application = new Application();
 
-        $application->on('start', function() use ($application) {
+        $application->on('start', function () use ($application) {
             $label = (new Label())
                 ->setFontSize(20)
                 ->setLeft(90)
@@ -401,12 +401,12 @@ class TestService
                 'Click to skip this ad',
             ];
 
-            $button->on('click', function() use ($button, $input, $phrases) {
+            $button->on('click', function () use ($button, $input, $phrases) {
                 $counter = $button->getCounter();
-                $button->setCounter(++$counter);
+                $button->setCounter(++ $counter);
 
                 if ($counter < 10) {
-                    $input->setValue($phrases[$counter - 1]);
+                    $input->setValue($phrases[ $counter - 1 ]);
                 } elseif ($counter < 20) {
                     $input->setValue('Please, stop! You already clicked ' . $counter . ' times');
                 } elseif ($counter == 20) {
@@ -447,19 +447,67 @@ class TestService
     {
         $application = new Application();
 
-        $application->on('start', function() use ($application) {
+        $application->on('start', function () use ($application) {
             $button = (new Button())
                 ->setLeft(40)
                 ->setTop(100)
                 ->setWidth(200)
                 ->setValue('Look, I\'m a button!');
 
-            $button->on('click', function() use ($button) {
+            $button->on('click', function () use ($button) {
                 $button->setValue('Look, I\'m a clicked button!');
             });
         });
 
         $application->run();
+    }
+
+
+    /**
+     * 使用事件驱动，非阻塞io库 react/react
+     */
+    public function test016()
+    {
+        $i = 0;
+        $app = function($req, $res) use ($i) {
+            $i ++;
+            $text = "This is request number $i.\n";
+            $headers = ['Content-Type' => 'text/plain'];
+            $res->writeHead(200, $headers);
+            $res->end($text);
+        };
+        $loop = \React\EventLoop\Factory::create();
+        $socket = new \React\Socket\Server($loop);
+        $http = new \React\Http\Server($socket);
+        $http->on('request', $app);
+        $socket->listen(8080);
+
+        echo "start...\n";
+        $loop->run();
+    }
+
+
+    /**
+     * curl follow relocation
+     */
+    public function test017()
+    {
+        $url = "log.lamkakyun.com/admin/manage-posts.php";
+        $ch = curl_init($url);
+
+        // 如果有CURLOPT_FOLLOWLOCATION，跟随重定向，获取重定向之后的页面内容
+        curl_setopt_array($ch, [
+            CURLOPT_TRANSFERTEXT => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_MAXREDIRS => 5, // 限制最大重定向次数
+        ]);
+
+        ob_start();
+        curl_exec($ch);
+        $content = ob_get_contents();
+        curl_close($ch);
+
+        var_dump($content);
     }
 
 

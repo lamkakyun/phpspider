@@ -14,7 +14,9 @@
     "simpletest/simpletest" : "v1.1.7",
     "chuyskywalker/rolling-curl" : "^3.1",
     "facebook/webdriver" : "1.1.2",
-    "gabrielrcouto/php-gui": "^0.1.0"
+    "gabrielrcouto/php-gui" : "^0.1.0",
+    "react/react" : "v0.4.2",
+    "zendframework/zend-developer-tools" : "1.1.0"
   },
   "license" : "BSD-3-Clause",
   "keywords" : [ "framework", "zf2" ],
