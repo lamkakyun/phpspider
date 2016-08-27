@@ -4,7 +4,9 @@
  * to the application root now.
  */
 
+// 需要加上这两条语句才能显示错误，否则，不显示错误
 error_reporting(E_ALL & ~E_USER_DEPRECATED);
+ini_set('display_errors', true);
 
 chdir(dirname(__DIR__));
 

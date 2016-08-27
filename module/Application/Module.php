@@ -37,7 +37,20 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface, Co
         });
 
         $eventManager->attach(new SendListener());
+
+        // 添加一个路由事件，用来区分不同模块的模板，zf2的试图配置覆盖令我无力吐槽
+        $eventManager->attach(MvcEvent::EVENT_ROUTE, array($this, 'onRoute'), -9000);
     }
+
+
+    public function onRoute(MvcEvent $e) {
+        $route = $e->getRouteMatch()->getMatchedRouteName();
+        if (strpos($route, 'admin') === 0) $e->getViewModel()->setTemplate('layout/admin');
+        else {
+            $e->getViewModel()->setTemplate('layout/layout');
+        }
+    }
+
 //    public function onBootstrap(MvcEvent $e)
 //    {
 //        $eventManager = $e->getApplication()->getEventManager();

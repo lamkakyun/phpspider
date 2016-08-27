@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink()
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery.min.js'))
+        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+    ; ?>
+</head>
+<style>
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+
+    <div class="container">
+    	<form action="" method="post" class="form-signin">
+    		<h2>博客平台后台管理登陆</h2>
+    	
+            <input type="text" name="username" class="form-control input-lg" value="" title="" required="required" placeholder="Username" autofocus>
+            <input type="password" name="name" class="form-control input-lg" value="" title="" required="required" placeholder="Password">
+            <div class="checkbox">
+            	<label>
+            		<input type="checkbox" value="Remember me">
+                    Remember me
+            	</label>
+            </div>
+            
+            
+    		<button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+    	</form>
+    </div>
+
+</body>
+</html>
