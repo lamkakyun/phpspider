@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink()
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery.min.js'))
+        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+    ; ?>
+</head>
+<style>
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+
+<div class="container">
+    <form action="<?php echo $this->url('admin/default', ['controller' => 'Public', 'action' => 'doRegister']); ?>" method="post" class="form-signin">
+        <h2>博客平台后台注册</h2>
+
+        <input type="text" name="username" class="form-control input-lg" value="" title="" required="required" placeholder="Username" autofocus>
+        <input type="text" name="email" class="form-control input-lg" value="" title="" required="required" placeholder="Email">
+        <input type="password" name="password" class="form-control input-lg" value="" title="" required="required" placeholder="Password">
+        <input type="password" name="repassword" class="form-control input-lg" value="" title="" required="required" placeholder="RePassword">
+        <input type="text" name="key" class="form-control input-lg" value="" title="" required="required" placeholder="Activation Key">
+
+        <div style="padding: 10px;"></div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+    </form>
+    <div class="alert alert-warning" style="display: none;">
+    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    	<strong>错误</strong> 错误信息
+    </div>
+</div>
+
+</body>
+</html>
