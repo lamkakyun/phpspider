@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery.min.js'))
+        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+    ; ?>
+    <title>Document</title>
+
+    <style>
+        .form-curl {
+            max-width: 400px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form action="" method="post" role="form" class="form-curl" id="form-curl">
+            <button type="button" class="btn btn-danger" id="add_args">ADD ARGS</button>
+            <legend>CURL Form</legend>
+
+            <select name="protocol" id="protocol" class="form-control input-lg">
+            	<option value="HTTP">HTTP</option>
+            	<option value="HTTPS">HTTPS</option>
+            </select>
+
+            <select name="method" id="method" class="form-control input-lg">
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+            </select>
+            
+            <input type="text" name="url" id="url" class="form-control input-lg" value="" title="" required="required" placeholder="URL" >
+            <input type="text" name="agrs[]" id="args" class="form-control input-lg" placeholder="ARGS(KEY=VALUE)" >
+
+            <button type="submit" id="form_curl_submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+<script>
+    (function(scope) {
+
+        $('#add_args').click(function() {
+            $('#form_curl_submit').before('<input type="text" name="agrs[]" class="form-control input-lg" placeholder="ARGS(KEY=VALUE)" >');
+        });
+
+    })(window);
+</script>
+
+</html>
